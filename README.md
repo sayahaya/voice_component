@@ -16,3 +16,5 @@
 ##マーケット
 自分の声に関心がある方
 
+##画面遷移図
+https://xd.adobe.com/view/c33ee6bc-ffea-49da-859a-6ed2ceb12c04-966d/
