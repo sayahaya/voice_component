@@ -1,0 +1,442 @@
+Started GET "/" for ::1 at 2021-04-14 11:34:12 +0900
+
+ActiveRecord::NoDatabaseError - Unknown database 'voice_component_development':
+
+Started POST "/__better_errors/d3c23ffd80844117/variables" for ::1 at 2021-04-14 11:34:12 +0900
+  [1m[35m (30.2ms)[0m  [1m[35mCREATE DATABASE `voice_component_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE DATABASE `voice_component_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (112.0ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT GET_LOCK('7528573780046850510', 0)[0m
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.9ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.7ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2021-04-14 02:35:32.244502', '2021-04-14 02:35:32.244502')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('7528573780046850510')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for ::1 at 2021-04-14 11:35:57 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/3.0.0/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/3.0.0/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.4ms | Allocations: 523)
+Completed 200 OK in 40ms (Views: 20.5ms | ActiveRecord: 0.0ms | Allocations: 4214)
+
+
+Started GET "/" for ::1 at 2021-04-14 15:06:15 +0900
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 6189ebb8186c9f868441
+Version: webpack 4.46.0
+Time: 3136ms
+Built at: 2021/04/14 15:06:21
+                                             Asset      Size               Chunks                         Chunk Names
+            js/application-f826770d917d8a37c1d8.js   125 KiB          application  [emitted] [immutable]  application
+        js/application-f826770d917d8a37c1d8.js.map   139 KiB          application  [emitted] [dev]        application
+              js/hello_vue-c82b9971ef26fea2d534.js   266 KiB            hello_vue  [emitted] [immutable]  hello_vue
+          js/hello_vue-c82b9971ef26fea2d534.js.map   311 KiB            hello_vue  [emitted] [dev]        hello_vue
+    js/voice_recording_vue-e291bb061a3b4dd264bb.js  7.97 KiB  voice_recording_vue  [emitted] [immutable]  voice_recording_vue
+js/voice_recording_vue-e291bb061a3b4dd264bb.js.map  3.54 KiB  voice_recording_vue  [emitted] [dev]        voice_recording_vue
+                                     manifest.json  1.06 KiB                       [emitted]              
+Entrypoint application = js/application-f826770d917d8a37c1d8.js js/application-f826770d917d8a37c1d8.js.map
+Entrypoint hello_vue = js/hello_vue-c82b9971ef26fea2d534.js js/hello_vue-c82b9971ef26fea2d534.js.map
+Entrypoint voice_recording_vue = js/voice_recording_vue-e291bb061a3b4dd264bb.js js/voice_recording_vue-e291bb061a3b4dd264bb.js.map
+[./app/javascript/app.vue] 1.16 KiB {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=script&lang=js&] 364 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] 361 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] 213 bytes {hello_vue} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./app/javascript/packs/hello_vue.js] 1.89 KiB {hello_vue} [built]
+[./app/javascript/packs/voice_recording_vue.js] 4.03 KiB {voice_recording_vue} [built] [failed] [1 error]
+[./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=script&lang=js&] ./node_modules/babel-loader/lib??ref--7-0!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=script&lang=js& 115 bytes {hello_vue} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 777 bytes {hello_vue} [built]
+[./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 771 bytes {hello_vue} [built]
+[./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true& 288 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 10 hidden modules
+
+ERROR in ./app/javascript/packs/voice_recording_vue.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /Users/hayat/voice_component/app/javascript/packs/voice_recording_vue.js: Support for the experimental syntax 'jsx' isn't currently enabled (1:1):
+
+> 1 | <html>
+    | ^
+  2 | <head>
+  3 |   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  4 | </head>
+
+Add @babel/preset-react (https://git.io/JfeDR) to the 'presets' section of your Babel config to enable transformation.
+If you want to leave it as-is, add @babel/plugin-syntax-jsx (https://git.io/vb4yA) to the 'plugins' section to enable parsing.
+    at Parser._raise (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:776:17)
+    at Parser.raiseWithData (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:769:17)
+    at Parser.expectOnePlugin (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:9750:18)
+    at Parser.parseExprAtom (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:11125:22)
+    at Parser.parseExprSubscripts (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10708:23)
+    at Parser.parseUpdate (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10688:21)
+    at Parser.parseMaybeUnary (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10666:23)
+    at Parser.parseExprOps (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10523:23)
+    at Parser.parseMaybeConditional (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10497:23)
+    at Parser.parseMaybeAssign (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10460:21)
+    at Parser.parseExpressionBase (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10405:23)
+    at /Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10399:39
+    at Parser.allowInAnd (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12098:16)
+    at Parser.parseExpression (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10399:17)
+    at Parser.parseStatementContent (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12390:23)
+    at Parser.parseStatement (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12259:17)
+    at Parser.parseBlockOrModuleBlockBody (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12845:25)
+    at Parser.parseBlockBody (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12836:10)
+    at Parser.parseProgram (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12190:10)
+    at Parser.parseTopLevel (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12181:25)
+    at Parser.parse (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:13892:10)
+    at parse (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:13944:38)
+    at parser (/Users/hayat/voice_component/node_modules/@babel/core/lib/parser/index.js:54:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/Users/hayat/voice_component/node_modules/@babel/core/lib/transformation/normalize-file.js:55:38)
+    at normalizeFile.next (<anonymous>)
+    at run (/Users/hayat/voice_component/node_modules/@babel/core/lib/transformation/index.js:31:50)
+    at run.next (<anonymous>)
+    at Function.transform (/Users/hayat/voice_component/node_modules/@babel/core/lib/transform.js:19:41)
+    at transform.next (<anonymous>)
+    at step (/Users/hayat/voice_component/node_modules/gensync/index.js:261:32)
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/Users/hayat/voice_component/node_modules/gensync/index.js:223:11)
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:189:28
+    at /Users/hayat/voice_component/node_modules/@babel/core/lib/gensync-utils/async.js:62:7
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:113:33
+
+  Rendered top/top.html.erb within layouts/application (Duration: 5665.2ms | Allocations: 4744)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5715.9ms | Allocations: 20595)
+Completed 200 OK in 5727ms (Views: 5719.1ms | ActiveRecord: 0.0ms | Allocations: 23649)
+
+
+Started GET "/" for ::1 at 2021-04-14 15:29:46 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 7ced73fcafbba3e3cf89
+Version: webpack 4.46.0
+Time: 1580ms
+Built at: 2021/04/14 15:29:50
+                                             Asset      Size               Chunks                         Chunk Names
+            js/application-f826770d917d8a37c1d8.js   125 KiB          application  [emitted] [immutable]  application
+        js/application-f826770d917d8a37c1d8.js.map   139 KiB          application  [emitted] [dev]        application
+              js/hello_vue-c82b9971ef26fea2d534.js   266 KiB            hello_vue  [emitted] [immutable]  hello_vue
+          js/hello_vue-c82b9971ef26fea2d534.js.map   311 KiB            hello_vue  [emitted] [dev]        hello_vue
+    js/voice_recording_vue-2dedd3de0b0129a96a7d.js  7.98 KiB  voice_recording_vue  [emitted] [immutable]  voice_recording_vue
+js/voice_recording_vue-2dedd3de0b0129a96a7d.js.map  3.54 KiB  voice_recording_vue  [emitted] [dev]        voice_recording_vue
+                                     manifest.json  1.06 KiB                       [emitted]              
+Entrypoint application = js/application-f826770d917d8a37c1d8.js js/application-f826770d917d8a37c1d8.js.map
+Entrypoint hello_vue = js/hello_vue-c82b9971ef26fea2d534.js js/hello_vue-c82b9971ef26fea2d534.js.map
+Entrypoint voice_recording_vue = js/voice_recording_vue-2dedd3de0b0129a96a7d.js js/voice_recording_vue-2dedd3de0b0129a96a7d.js.map
+[./app/javascript/app.vue] 1.16 KiB {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=script&lang=js&] 364 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] 361 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] 213 bytes {hello_vue} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./app/javascript/packs/hello_vue.js] 1.89 KiB {hello_vue} [built]
+[./app/javascript/packs/voice_recording_vue.js] 4.04 KiB {voice_recording_vue} [built] [failed] [1 error]
+[./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=script&lang=js&] ./node_modules/babel-loader/lib??ref--7-0!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=script&lang=js& 115 bytes {hello_vue} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 777 bytes {hello_vue} [built]
+[./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 771 bytes {hello_vue} [built]
+[./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true& 288 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 10 hidden modules
+
+ERROR in ./app/javascript/packs/voice_recording_vue.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /Users/hayat/voice_component/app/javascript/packs/voice_recording_vue.js: Support for the experimental syntax 'jsx' isn't currently enabled (1:1):
+
+> 1 | <head>
+    | ^
+  2 |   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  3 | </head>
+  4 | <body class="p-3">
+
+Add @babel/preset-react (https://git.io/JfeDR) to the 'presets' section of your Babel config to enable transformation.
+If you want to leave it as-is, add @babel/plugin-syntax-jsx (https://git.io/vb4yA) to the 'plugins' section to enable parsing.
+    at Parser._raise (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:776:17)
+    at Parser.raiseWithData (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:769:17)
+    at Parser.expectOnePlugin (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:9750:18)
+    at Parser.parseExprAtom (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:11125:22)
+    at Parser.parseExprSubscripts (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10708:23)
+    at Parser.parseUpdate (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10688:21)
+    at Parser.parseMaybeUnary (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10666:23)
+    at Parser.parseExprOps (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10523:23)
+    at Parser.parseMaybeConditional (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10497:23)
+    at Parser.parseMaybeAssign (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10460:21)
+    at Parser.parseExpressionBase (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10405:23)
+    at /Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10399:39
+    at Parser.allowInAnd (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12098:16)
+    at Parser.parseExpression (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10399:17)
+    at Parser.parseStatementContent (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12390:23)
+    at Parser.parseStatement (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12259:17)
+    at Parser.parseBlockOrModuleBlockBody (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12845:25)
+    at Parser.parseBlockBody (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12836:10)
+    at Parser.parseProgram (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12190:10)
+    at Parser.parseTopLevel (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12181:25)
+    at Parser.parse (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:13892:10)
+    at parse (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:13944:38)
+    at parser (/Users/hayat/voice_component/node_modules/@babel/core/lib/parser/index.js:54:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/Users/hayat/voice_component/node_modules/@babel/core/lib/transformation/normalize-file.js:55:38)
+    at normalizeFile.next (<anonymous>)
+    at run (/Users/hayat/voice_component/node_modules/@babel/core/lib/transformation/index.js:31:50)
+    at run.next (<anonymous>)
+    at Function.transform (/Users/hayat/voice_component/node_modules/@babel/core/lib/transform.js:19:41)
+    at transform.next (<anonymous>)
+    at step (/Users/hayat/voice_component/node_modules/gensync/index.js:261:32)
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/Users/hayat/voice_component/node_modules/gensync/index.js:223:11)
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:189:28
+    at /Users/hayat/voice_component/node_modules/@babel/core/lib/gensync-utils/async.js:62:7
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:113:33
+
+  Rendered top/top.html.erb within layouts/application (Duration: 3847.0ms | Allocations: 5516)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3858.1ms | Allocations: 10241)
+Completed 200 OK in 3860ms (Views: 3859.3ms | Allocations: 10709)
+
+
+Started GET "/" for ::1 at 2021-04-14 15:45:32 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 6189ebb8186c9f868441
+Version: webpack 4.46.0
+Time: 1592ms
+Built at: 2021/04/14 15:45:35
+                                             Asset      Size               Chunks                         Chunk Names
+            js/application-f826770d917d8a37c1d8.js   125 KiB          application  [emitted] [immutable]  application
+        js/application-f826770d917d8a37c1d8.js.map   139 KiB          application  [emitted] [dev]        application
+              js/hello_vue-c82b9971ef26fea2d534.js   266 KiB            hello_vue  [emitted] [immutable]  hello_vue
+          js/hello_vue-c82b9971ef26fea2d534.js.map   311 KiB            hello_vue  [emitted] [dev]        hello_vue
+    js/voice_recording_vue-e291bb061a3b4dd264bb.js  7.97 KiB  voice_recording_vue  [emitted] [immutable]  voice_recording_vue
+js/voice_recording_vue-e291bb061a3b4dd264bb.js.map  3.54 KiB  voice_recording_vue  [emitted] [dev]        voice_recording_vue
+                                     manifest.json  1.06 KiB                       [emitted]              
+Entrypoint application = js/application-f826770d917d8a37c1d8.js js/application-f826770d917d8a37c1d8.js.map
+Entrypoint hello_vue = js/hello_vue-c82b9971ef26fea2d534.js js/hello_vue-c82b9971ef26fea2d534.js.map
+Entrypoint voice_recording_vue = js/voice_recording_vue-e291bb061a3b4dd264bb.js js/voice_recording_vue-e291bb061a3b4dd264bb.js.map
+[./app/javascript/app.vue] 1.16 KiB {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=script&lang=js&] 364 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] 361 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] 213 bytes {hello_vue} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./app/javascript/packs/hello_vue.js] 1.89 KiB {hello_vue} [built]
+[./app/javascript/packs/voice_recording_vue.js] 4.03 KiB {voice_recording_vue} [built] [failed] [1 error]
+[./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=script&lang=js&] ./node_modules/babel-loader/lib??ref--7-0!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=script&lang=js& 115 bytes {hello_vue} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 777 bytes {hello_vue} [built]
+[./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 771 bytes {hello_vue} [built]
+[./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true& 288 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 10 hidden modules
+
+ERROR in ./app/javascript/packs/voice_recording_vue.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /Users/hayat/voice_component/app/javascript/packs/voice_recording_vue.js: Support for the experimental syntax 'jsx' isn't currently enabled (1:1):
+
+> 1 | <html>
+    | ^
+  2 | <head>
+  3 |   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  4 | </head>
+
+Add @babel/preset-react (https://git.io/JfeDR) to the 'presets' section of your Babel config to enable transformation.
+If you want to leave it as-is, add @babel/plugin-syntax-jsx (https://git.io/vb4yA) to the 'plugins' section to enable parsing.
+    at Parser._raise (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:776:17)
+    at Parser.raiseWithData (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:769:17)
+    at Parser.expectOnePlugin (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:9750:18)
+    at Parser.parseExprAtom (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:11125:22)
+    at Parser.parseExprSubscripts (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10708:23)
+    at Parser.parseUpdate (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10688:21)
+    at Parser.parseMaybeUnary (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10666:23)
+    at Parser.parseExprOps (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10523:23)
+    at Parser.parseMaybeConditional (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10497:23)
+    at Parser.parseMaybeAssign (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10460:21)
+    at Parser.parseExpressionBase (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10405:23)
+    at /Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10399:39
+    at Parser.allowInAnd (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12098:16)
+    at Parser.parseExpression (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:10399:17)
+    at Parser.parseStatementContent (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12390:23)
+    at Parser.parseStatement (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12259:17)
+    at Parser.parseBlockOrModuleBlockBody (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12845:25)
+    at Parser.parseBlockBody (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12836:10)
+    at Parser.parseProgram (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12190:10)
+    at Parser.parseTopLevel (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:12181:25)
+    at Parser.parse (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:13892:10)
+    at parse (/Users/hayat/voice_component/node_modules/@babel/parser/lib/index.js:13944:38)
+    at parser (/Users/hayat/voice_component/node_modules/@babel/core/lib/parser/index.js:54:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/Users/hayat/voice_component/node_modules/@babel/core/lib/transformation/normalize-file.js:55:38)
+    at normalizeFile.next (<anonymous>)
+    at run (/Users/hayat/voice_component/node_modules/@babel/core/lib/transformation/index.js:31:50)
+    at run.next (<anonymous>)
+    at Function.transform (/Users/hayat/voice_component/node_modules/@babel/core/lib/transform.js:19:41)
+    at transform.next (<anonymous>)
+    at step (/Users/hayat/voice_component/node_modules/gensync/index.js:261:32)
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/Users/hayat/voice_component/node_modules/gensync/index.js:223:11)
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:189:28
+    at /Users/hayat/voice_component/node_modules/@babel/core/lib/gensync-utils/async.js:62:7
+    at /Users/hayat/voice_component/node_modules/gensync/index.js:113:33
+
+  Rendered top/top.html.erb within layouts/application (Duration: 3650.4ms | Allocations: 5636)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3662.5ms | Allocations: 13872)
+Completed 200 OK in 3667ms (Views: 3665.8ms | Allocations: 15079)
+
+
+Started GET "/" for ::1 at 2021-04-14 17:34:31 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 25.8ms | Allocations: 3696)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.4ms | Allocations: 8605)
+Completed 200 OK in 60ms (Views: 55.7ms | Allocations: 9811)
+
+
+Started GET "/" for ::1 at 2021-04-15 07:09:16 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 37.0ms | Allocations: 3570)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 71.0ms | Allocations: 8277)
+Completed 200 OK in 85ms (Views: 76.9ms | Allocations: 8720)
+
+
+Started GET "/" for ::1 at 2021-04-15 07:21:22 +0900
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 5.8ms | Allocations: 4192)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 11253)
+Completed 200 OK in 30ms (Views: 22.5ms | ActiveRecord: 0.0ms | Allocations: 14404)
+
+
+Started GET "/" for ::1 at 2021-04-15 07:45:22 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/hayat/voice_component/public/packs
+[Webpacker] Hash: db7b8d0378269835d9e0
+Version: webpack 4.46.0
+Time: 1798ms
+Built at: 2021/04/15 7:45:26
+                                             Asset      Size               Chunks                         Chunk Names
+            js/application-f826770d917d8a37c1d8.js   125 KiB          application  [emitted] [immutable]  application
+        js/application-f826770d917d8a37c1d8.js.map   139 KiB          application  [emitted] [dev]        application
+              js/hello_vue-c82b9971ef26fea2d534.js   266 KiB            hello_vue  [emitted] [immutable]  hello_vue
+          js/hello_vue-c82b9971ef26fea2d534.js.map   311 KiB            hello_vue  [emitted] [dev]        hello_vue
+    js/voice_recording_vue-31ea534bcb8725924d54.js  6.12 KiB  voice_recording_vue  [emitted] [immutable]  voice_recording_vue
+js/voice_recording_vue-31ea534bcb8725924d54.js.map  6.56 KiB  voice_recording_vue  [emitted] [dev]        voice_recording_vue
+                                     manifest.json  1.06 KiB                       [emitted]              
+Entrypoint application = js/application-f826770d917d8a37c1d8.js js/application-f826770d917d8a37c1d8.js.map
+Entrypoint hello_vue = js/hello_vue-c82b9971ef26fea2d534.js js/hello_vue-c82b9971ef26fea2d534.js.map
+Entrypoint voice_recording_vue = js/voice_recording_vue-31ea534bcb8725924d54.js js/voice_recording_vue-31ea534bcb8725924d54.js.map
+[./app/javascript/app.vue] 1.16 KiB {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=script&lang=js&] 364 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] 361 bytes {hello_vue} [built]
+[./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] 213 bytes {hello_vue} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./app/javascript/packs/hello_vue.js] 1.89 KiB {hello_vue} [built]
+[./app/javascript/packs/voice_recording_vue.js] 2.18 KiB {voice_recording_vue} [built]
+[./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=script&lang=js&] ./node_modules/babel-loader/lib??ref--7-0!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=script&lang=js& 115 bytes {hello_vue} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 777 bytes {hello_vue} [built]
+[./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css&] ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??ref--2-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&scoped=true&lang=css& 771 bytes {hello_vue} [built]
+[./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true&] ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./app/javascript/app.vue?vue&type=template&id=6fb8108a&scoped=true& 288 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 10 hidden modules
+
+  Rendered top/top.html.erb within layouts/application (Duration: 4022.0ms | Allocations: 5817)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4037.5ms | Allocations: 10717)
+Completed 200 OK in 4051ms (Views: 4044.1ms | Allocations: 11910)
+
+
+Started GET "/voice_recording_vue.js" for ::1 at 2021-04-15 07:45:26 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/voice_recording_vue.js"):
+  
+Started GET "/" for ::1 at 2021-04-15 07:53:03 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 7.0ms | Allocations: 3724)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 8626)
+Completed 200 OK in 21ms (Views: 19.3ms | Allocations: 9835)
+
+
+Started GET "/" for ::1 at 2021-04-15 08:00:52 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+  Rendered top/top.html.erb within layouts/application (Duration: 0.3ms | Allocations: 129)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 5181)
+Completed 200 OK in 19ms (Views: 17.9ms | Allocations: 6374)
+
+
+Started GET "/" for ::1 at 2021-04-15 08:02:00 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 7.3ms | Allocations: 3731)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 8642)
+Completed 200 OK in 18ms (Views: 16.0ms | Allocations: 9848)
+
+
+Started GET "/" for ::1 at 2021-04-15 08:03:11 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 5.5ms | Allocations: 3724)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 8637)
+Completed 200 OK in 20ms (Views: 17.8ms | Allocations: 9837)
+
+
+Started GET "/" for ::1 at 2021-04-15 08:08:45 +0900
+Processing by TopController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering top/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered top/top.html.erb within layouts/application (Duration: 5.2ms | Allocations: 3723)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 8623)
+Completed 200 OK in 19ms (Views: 17.4ms | Allocations: 9822)
+
+
