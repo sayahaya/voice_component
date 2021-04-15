@@ -18,3 +18,6 @@
 
 ##画面遷移図リンク
  https://xd.adobe.com/view/c33ee6bc-ffea-49da-859a-6ed2ceb12c04-966d/
+
+##ER図リンク
+https://app.diagrams.net/#Lvoice_component_er%E5%9B%B3
