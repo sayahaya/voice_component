@@ -1,0 +1,17 @@
+<html>
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-3">
+  <h1 class="mb-3">（仮）あなたの声の成分</h1>
+  <div id="app">
+      <!-- ③ 録音の開始／終了ボタンを設置する部分 -->
+     <button class="btn btn-primary" type="button" v-if="status=='ready'" @click="startRecording">さっそく声をチェック</button>
+     <button class="btn btn-danger" type="button" v-if="status=='recording'" @click="stopRecording">録音を終了する</button>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<%= javascript_pack_tag 'voice_recording_vue' %>
+</html>
+
+
