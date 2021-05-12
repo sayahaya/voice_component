@@ -1,0 +1,123 @@
+<html>
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-3">
+  <main id="app">
+
+    <!-- 録音の開始/録音中/結果を見るボタンを設置する部分 -->
+    <div v-if="screen=='recordingScreen'" key="recordingScreen">
+      <h1 class="mb-3">（仮）あなたの声の成分</h1>
+
+      <button class="btn btn-primary" type="button"  v-if="status=='ready'" @click="startRecording">さっそく声をチェック<br>(ボタンを押して５秒間声を入力すると結果が表示されます)<br></button>
+      <button class="btn btn-danger" type="button" v-if="status=='recording'">録音中...</button>
+      <form id="btn">
+        <button class="btn btn-primary" type="button" v-if="status=='finishRecording'" @click="changeScreen">結果を見る！！</button>
+      </form>
+
+    </div>
+
+    <!--結果を見るボタンを押した後の結果画面部分 -->
+    <div v-if="screen=='resultScreen'" key="resultScreen">
+      <p>画面切り替わったよ</p>
+      <p>あなたの声の成分は・・・</p>
+      <div v-html="results1"></div>
+      <div v-html="results2"></div>
+      <div v-html="results3"></div>
+      <div v-html="results4"></div>
+    </div>
+
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      //  変数を宣言する部分
+      status: 'init',     // 状況
+      recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
+      audioData: [],      // 入力された音声データ
+      audioExtension: '',  // 音声ファイルの拡張子
+      screen: 'recordingScreen', //画面切り替え
+      results1: '',         // APIから取得したデータ
+      results2: '',         // ↓
+      results3: '',         // ↓
+      results4: ''          // ↓
+    },
+    methods: {
+      //  録音を開始する部分
+      startRecording() {
+        this.status = 'recording';
+        this.audioData = [];
+        this.recorder.start();
+      },
+      //  音声ファイルの拡張子を取得する部分
+      getExtension(audioType) {
+        let extension = 'wav';
+        const matches = audioType.match(/audio\/([^;]+)/);
+        if(matches) {
+          extension = matches[1];
+        }  
+        return '.'+ extension;
+      },
+      // 結果画面に切り替える部分
+      changeScreen () {
+        this.screen = 'resultScreen'; 
+      }
+    },
+    mounted() {
+      //  マイクにアクセス
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          //let audioBlob;
+          this.recorder = new MediaRecorder(stream);
+          this.recorder.addEventListener('dataavailable', e => {
+            this.audioData.push(e.data);
+            this.audioExtension = this.getExtension(e.data.type);
+          });
+          this.recorder.addEventListener('stop', () => {
+            const audioBlob = new Blob(this.audioData);
+            this.status = 'finishRecording';
+          //});
+          //document.getElementById("btn").addEventListener('click', () => {
+            fetch( gon.url, {
+              method: 'POST',
+              headers: {
+                "Ocp-Apim-Subscription-Key": gon.subscription_key,
+                "Content-Type":"audio/wav"
+              },
+              body: audioBlob
+            }).then(response => {
+              return response.json();
+            }).then(data => {
+              console.log(JSON.stringify(data));
+              //this.results = data['identifiedProfile']['profileId'];
+              this.results1 = data['identifiedProfile'];
+              this.results2 = data['profilesRanking'][0];
+              this.results3 = data['profilesRanking'][1];
+              this.results4 = data['profilesRanking'][2];
+
+                //取得した識別dataをJSONデータ読み込みに変え、formのvalueにデータを入れる
+               // document.getElementById("resultData").innerHTML = "<p>JSON.stringify(data)</p>";
+              //}).then(() => {
+                //document.location.href = './identification_result';  
+              }).catch(err => {
+                console.log(err);
+              })
+            });
+            this.status = 'ready';
+            this.recorder.addEventListener('start', () => {
+              setTimeout( () => {
+                alert('stop');
+                this.recorder.stop();
+              }, 5000);
+            });
+
+          });
+      }
+    });
+  </script>
+</body>
+</html>
