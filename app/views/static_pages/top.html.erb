@@ -1,6 +1,9 @@
 <html>
 <head>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src = "https://code.highcharts.com/highcharts.src.js" ></script>
 </head>
 <body class="p-3">
   <main id="app">
@@ -15,94 +18,157 @@
         <button class="btn btn-primary" type="button" v-if="status=='finishRecording'" @click="changeScreen">結果を見る！！</button>
       </form>
 
+       <div id="results5" style="width: 500px; height: 500px; "></div>
+
     </div>
 
     <!--結果を見るボタンを押した後の結果画面部分 -->
     <div v-if="screen=='resultScreen'" key="resultScreen">
-      <p>画面切り替わったよ</p>
       <p>あなたの声の成分は・・・</p>
-      <div v-html="results1"></div>
-      <div v-html="results2"></div>
-      <div v-html="results3"></div>
-      <div v-html="results4"></div>
+      <div id="results5" style="width: 500px; height: 500px; "></div>
+      
+      <!--<div v-html="results1_1"></div>
+      <div v-html="resutts1_2"></div>
+      <div v-html="results2_1"></div>
+      <div v-html="results2_2"></div>
+      <div v-html="results3_1"></div>
+      <div v-html="results3_2"></div>
+      <div v-html="results4_1"></div>
+      <div v-html="results4_2"></div>-->
     </div>
 
   </main>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-
-<script>
-  new Vue({
-    el: '#app',
-    data: {
-      //  変数を宣言する部分
-      status: 'init',     // 状況
-      recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
-      audioData: [],      // 入力された音声データ
-      audioExtension: '',  // 音声ファイルの拡張子
-      screen: 'recordingScreen', //画面切り替え
-      results1: '',         // APIから取得したデータ
-      results2: '',         // ↓
-      results3: '',         // ↓
-      results4: ''          // ↓
-    },
-    methods: {
-      //  録音を開始する部分
-      startRecording() {
-        this.status = 'recording';
-        this.audioData = [];
-        this.recorder.start();
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        //  変数を宣言する部分
+        status: 'init',     // 状況
+        recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
+        audioData: [],      // 入力された音声データ
+        audioExtension: '',  // 音声ファイルの拡張子
+        screen: 'recordingScreen', //画面切り替え
+        results1_1: '',         // APIから取得したデータ
+        results1_2: '',        //↓
+        results2_1: '',         // ↓
+        results2_2: '',      
+        results3_1: '',         // ↓
+        results3_2: '',
+        results4_1: '',          // ↓
+        results4_2: '',
+        results5: '',
       },
-      //  音声ファイルの拡張子を取得する部分
-      getExtension(audioType) {
-        let extension = 'wav';
-        const matches = audioType.match(/audio\/([^;]+)/);
-        if(matches) {
-          extension = matches[1];
-        }  
-        return '.'+ extension;
+      methods: {
+        //  録音を開始する部分
+        startRecording() {
+          this.status = 'recording';
+          this.audioData = [];
+          this.recorder.start();
+        },
+        //  音声ファイルの拡張子を取得する部分
+        getExtension(audioType) {
+          let extension = 'wav';
+          const matches = audioType.match(/audio\/([^;]+)/);
+          if(matches) {
+            extension = matches[1];
+          }  
+          return '.'+ extension;
+        },
+        // 結果画面に切り替える部分
+        changeScreen () {
+          this.screen = 'resultScreen'; 
+        }
       },
-      // 結果画面に切り替える部分
-      changeScreen () {
-        this.screen = 'resultScreen'; 
-      }
-    },
-    mounted() {
-      //  マイクにアクセス
-      navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-          //let audioBlob;
-          this.recorder = new MediaRecorder(stream);
-          this.recorder.addEventListener('dataavailable', e => {
-            this.audioData.push(e.data);
-            this.audioExtension = this.getExtension(e.data.type);
-          });
-          this.recorder.addEventListener('stop', () => {
-            const audioBlob = new Blob(this.audioData);
-            this.status = 'finishRecording';
-          //});
-          //document.getElementById("btn").addEventListener('click', () => {
-            fetch( gon.url, {
-              method: 'POST',
-              headers: {
-                "Ocp-Apim-Subscription-Key": gon.subscription_key,
-                "Content-Type":"audio/wav"
-              },
-              body: audioBlob
-            }).then(response => {
-              return response.json();
-            }).then(data => {
-              console.log(JSON.stringify(data));
-              //this.results = data['identifiedProfile']['profileId'];
-              this.results1 = data['identifiedProfile'];
-              this.results2 = data['profilesRanking'][0];
-              this.results3 = data['profilesRanking'][1];
-              this.results4 = data['profilesRanking'][2];
-
-                //取得した識別dataをJSONデータ読み込みに変え、formのvalueにデータを入れる
-               // document.getElementById("resultData").innerHTML = "<p>JSON.stringify(data)</p>";
-              //}).then(() => {
-                //document.location.href = './identification_result';  
+      mounted() {
+        //  マイクにアクセス
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            let audioBlob;
+            this.recorder = new MediaRecorder(stream);
+            this.recorder.addEventListener('dataavailable', e => {
+              this.audioData.push(e.data);
+              this.audioExtension = this.getExtension(e.data.type);
+            });
+            this.recorder.addEventListener('stop', () => {
+              audioBlob = new Blob(this.audioData);
+              this.status = 'finishRecording';
+            });
+            document.getElementById("btn").addEventListener('click', () => {
+              fetch( gon.url, {
+                method: 'POST',
+                headers: {
+                  "Ocp-Apim-Subscription-Key": gon.subscription_key,
+                  "Content-Type":"audio/wav"
+                },
+                body: audioBlob
+              }).then(response => {
+                return response.json();
+              }).then(data => {
+                console.log(JSON.stringify(data));
+                console.log(gon.voices);
+                const voiceId = data['identifiedProfile']['profileId'];
+                const voiceId_0 = data['profilesRanking'][0]['profileId'];
+                const voiceId_1 = data['profilesRanking'][1]['profileId'];
+                const voiceId_2 = data['profilesRanking'][2]['profileId'];
+                const voices = gon.voices;
+                results1_1 = voices.find( ({profileId}) => profileId === voiceId )['name'];
+                //this.resutts1_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['identifiedProfile']['score']);
+                results1_2 = (data['identifiedProfile']['score'])*100;
+                results2_1 = voices.find( ({profileId}) => profileId === voiceId_0 )['name'];
+                //this.results2_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['profilesRanking'][0]['score']);
+                results2_2 = (data['profilesRanking'][0]['score'])*100;
+                results3_1 = voices.find( ({profileId}) => profileId === voiceId_1 )['name'];
+                //this.results3_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['profilesRanking'][1]['score']);
+                results3_2 = (data['profilesRanking'][1]['score'])*100;
+                results4_1 = voices.find( ({profileId}) => profileId === voiceId_2 )['name'];
+                //results4_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['profilesRanking'][2]['score']);
+                results4_2 = (data['profilesRanking'][2]['score'])*100;
+                results5 = new Highcharts.Chart('results5',{
+                      //chart: {
+                        //styleMode: true
+                      //},
+                      title: {//タイトル設定
+                        style: {
+                          fontSize: '20px',
+                          fontWeight: 'bold' 
+                        },
+                        text: 'あなたの声の成分は・・・'
+                      },
+                      plotOptions: {//オプション設定
+                        pie: {               
+                          dataLabels: {
+                            color: 'black',
+                            formatter: function() {
+                              return '<b>'+ this.point.name +'</b>'+'<br>'+ Math.round(this.percentage*10)/10 +'%';
+                            },
+                            enabled: true
+                          }
+                        }
+                      },
+                      series: [{//データ設定
+                        type: 'pie',
+                        name:'メインカラー',
+                        data: [
+                          {name: results1_1, y: results1_2},
+                          {name: results2_1, y: results2_2},
+                          {name: results3_1, y: results3_2},
+                          {name: results4_1, y: results4_2},
+                          //{name:'白',y:12, color:'#ffffff'},
+                          //{name:'黒',y:8, color:'#000000'},
+                          //{name:'灰',y:8, color:'#e8ecef'},
+                          //{name:'青',y:8, color:'#0f2350'},
+                          //{name:'赤',y:5, color:'#d7003a'},
+                          //{name:'黄',y:3, color:'#f6ad49'},
+                          //{name:'緑',y:2, color:'#82ae46'},
+                          //{name:'橙',y:2, color:'#ff9000'},
+                          //{name:'茶',y:1, color:'#cd8c5c'},
+                          //{name:'紫',y:1, color:'#7a4171'}
+                        ],
+                        showInLegend: true//凡例の表示
+                      }]
+                                        
+                    });
               }).catch(err => {
                 console.log(err);
               })
