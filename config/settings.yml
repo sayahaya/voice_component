@@ -1,3 +1,3 @@
 speaker_identification:
   subscription_key: <%=Rails.application.credentials.speaker_identification[:Subscription_Key]%>
-  url: "https://westus.api.cognitive.microsoft.com/speaker/identification/v2.0/text-independent/profiles/identifySingleSpeaker?profileIds=34349224-8943-4073-8a42-e6bc6e35eb31,44b1405c-dc29-48c5-b916-cf344e2d26b3,94fa8cdd-afac-4c29-976d-44f766201e39&ignoreMinLength={true}"
+  url: "https://westus.api.cognitive.microsoft.com/speaker/identification/v2.0/text-independent/profiles/identifySingleSpeaker?profileIds=34349224-8943-4073-8a42-e6bc6e35eb31,44b1405c-dc29-48c5-b916-cf344e2d26b3,94fa8cdd-afac-4c29-976d-44f766201e39,080fbf2f-0a38-443f-a5ea-272b35b5577d,3f5d2ee2-07ff-4071-b5fc-ba89fd105b8e,cbe07dbc-81ba-44e5-84e4-de7c8bb5d57f,ef7460f0-4ea0-4f88-b819-922ac1daade0,d48480be-8e25-4b4e-b84b-b635d597330c,aaf4cf21-6029-40d7-b4f0-dcedaeed299d,645eb2ca-75e9-4360-ba31-e0f8172ea2de&ignoreMinLength={true}"
