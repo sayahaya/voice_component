@@ -1,40 +1,74 @@
 <html>
-<head>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1”>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Kosugi&family=Rubik+Mono+One&display=swap');</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script src = "https://code.highcharts.com/highcharts.src.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
-<body class="p-3">
+<body class="top">
   <main id="app">
 
     <!-- 録音の開始/録音中/結果を見るボタンを設置する部分 -->
-    <div v-if="screen=='recordingScreen'" key="recordingScreen">
-      <h1 class="mb-3">（仮）あなたの声の成分</h1>
+    <div class="container-fluid" v-if="screen=='recordingScreen'" key="recordingScreen">
+      <p class="logo_2">声の成分分析ツール</p>
+      <p class="logo_1">Voice<br>component.</p>
 
-      <button class="btn btn-primary" type="button"  v-if="status=='ready'" @click="startRecording">さっそく声をチェック<br>(ボタンを押して５秒間声を入力すると結果が表示されます)<br></button>
-      <button class="btn btn-danger" type="button" v-if="status=='recording'">録音中...</button>
-      <form id="btn">
-        <button class="btn btn-primary" type="button" v-if="status=='finishRecording'" @click="changeScreen">結果を見る！！</button>
-      </form>
+      <div class="link">
+        <%= link_to "Voice componentとは？", help_path %><br>
+        <%= link_to "利用規約", terms_path %><br>
+        <%= link_to "プライバシーポリシー", privacy_path %><br>
+        <%= link_to "お問い合わせ先", inquiry_path %>
+      </div>
 
-       <div id="results5" style="width: 500px; height: 500px; "></div>
+      <div class="btn-list"> 
+        <%= image_tag 'face9.png', class: 'background-image' %>
 
+        <button class="record-btn" type="button"  v-if="status=='ready'" @click="startRecording">
+          さっそく声の成分をチェック!!&nbsp;<i class="fas fa-microphone fa-lg"></i><br>
+          (ボタンを押して５秒間マイクに話しかけて下さい)
+        </button>
+       
+        <button class="recording-btn" type="button" v-if="status=='recording'">
+          <span id="sec"></span>&nbsp;<i class="fas fa-microphone fa-lg"></i>
+        </button>
+      
+        <form id="btn">
+          <button class="result-btn" type="button" v-if="status=='finishRecording'" @click="changeScreen">
+            分析結果を確認する!!&nbsp;<i class="fas fa-search fa-lg" aria-hidden="true"></i>
+          </button>
+        </form>
+        
+        <button class="reRecording-btn" type="button" v-if="status=='finishRecording'" @click="startRecording">
+          もう一度声を録音する&nbsp;<i class="fas fa-microphone fa-lg"></i>
+        </button>
+      </div>
     </div>
 
     <!--結果を見るボタンを押した後の結果画面部分 -->
     <div v-if="screen=='resultScreen'" key="resultScreen">
-      <p>あなたの声の成分は・・・</p>
-      <div id="results5" style="width: 500px; height: 500px; "></div>
-      
-      <!--<div v-html="results1_1"></div>
-      <div v-html="resutts1_2"></div>
-      <div v-html="results2_1"></div>
-      <div v-html="results2_2"></div>
-      <div v-html="results3_1"></div>
-      <div v-html="results3_2"></div>
-      <div v-html="results4_1"></div>
-      <div v-html="results4_2"></div>-->
+      <div class="resultTitle"><i class="fas fa-search fa-lg" aria-hidden="true"></i>&nbsp;分析結果</div>
+      <div class="pie" id="pie"></div>
+      <br>
+      <!--<div id="result"></div>-->
+      <br>
+      <br>
+      <div class="button-container">
+        <div class="button-wrapper">
+        
+          <button class="button button-top button-lg" type="button" onclick="window.location.reload();">
+            <i class="fas fa-home"></i>&nbsp;トップページへ
+          </button>
+
+          <a href="" id="twitter" class="button button-tw button-lg" rel="nofollow" target="_blank">
+            分析結果をツイート</i>
+          </a>
+          <!--<a href="" id="ss" download="html_ss.png">スクリーンショット(document.body全体)をダウンロード</a><br>-->
+          <!--<button class="btn btn-primary" type="button" @click="preview">プレビュー表示</button>-->
+        </div>
+      </div>
     </div>
 
   </main>
@@ -49,15 +83,6 @@
         audioData: [],      // 入力された音声データ
         audioExtension: '',  // 音声ファイルの拡張子
         screen: 'recordingScreen', //画面切り替え
-        results1_1: '',         // APIから取得したデータ
-        results1_2: '',        //↓
-        results2_1: '',         // ↓
-        results2_2: '',      
-        results3_1: '',         // ↓
-        results3_2: '',
-        results4_1: '',          // ↓
-        results4_2: '',
-        results5: '',
       },
       methods: {
         //  録音を開始する部分
@@ -77,8 +102,24 @@
         },
         // 結果画面に切り替える部分
         changeScreen () {
-          this.screen = 'resultScreen'; 
+          this.screen = 'resultScreen';
         }
+        //preview (){
+          //html2canvas(document.getElementById("pie"))
+          //.then( function(canvas){
+            //let result = document.getElementById("result");
+            //result.innerHTML = '';
+            //result.appendChild(canvas);  
+          //});
+          //html2canvas(document.getElementById("pie"))
+          //.then( function(canvas){
+            //let imgData = canvas.toBlob();
+            //let imgData = canvas.toDataURL();
+            //let b64_encoded_binary = imgData.split(',')[1];
+            //document.getElementById("ss").src = b64_encoded_binary; 
+            
+          //});
+        //}
       },
       mounted() {
         //  マイクにアクセス
@@ -107,80 +148,106 @@
               }).then(data => {
                 console.log(JSON.stringify(data));
                 console.log(gon.voices);
-                const voiceId = data['identifiedProfile']['profileId'];
-                const voiceId_0 = data['profilesRanking'][0]['profileId'];
-                const voiceId_1 = data['profilesRanking'][1]['profileId'];
-                const voiceId_2 = data['profilesRanking'][2]['profileId'];
-                const voices = gon.voices;
-                results1_1 = voices.find( ({profileId}) => profileId === voiceId )['name'];
-                //this.resutts1_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['identifiedProfile']['score']);
-                results1_2 = (data['identifiedProfile']['score'])*100;
-                results2_1 = voices.find( ({profileId}) => profileId === voiceId_0 )['name'];
-                //this.results2_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['profilesRanking'][0]['score']);
-                results2_2 = (data['profilesRanking'][0]['score'])*100;
-                results3_1 = voices.find( ({profileId}) => profileId === voiceId_1 )['name'];
-                //this.results3_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['profilesRanking'][1]['score']);
-                results3_2 = (data['profilesRanking'][1]['score'])*100;
-                results4_1 = voices.find( ({profileId}) => profileId === voiceId_2 )['name'];
-                //results4_2 = new Intl.NumberFormat('ja', { style: 'percent' }).format(data['profilesRanking'][2]['score']);
-                results4_2 = (data['profilesRanking'][2]['score'])*100;
-                results5 = new Highcharts.Chart('results5',{
-                      //chart: {
-                        //styleMode: true
-                      //},
-                      title: {//タイトル設定
-                        style: {
-                          fontSize: '20px',
-                          fontWeight: 'bold' 
+                //DBからのデータを取得
+                const voices = gon.voices; 
+                //API仕様の音声データを取得
+                const voiceId_1 = data['profilesRanking'][0]['profileId'];
+                const voiceId_2 = data['profilesRanking'][1]['profileId'];
+                const voiceId_3 = data['profilesRanking'][2]['profileId'];
+                const voiceId_4 = data['profilesRanking'][3]['profileId'];
+                const name_1 = voices.find( ({profileId}) => profileId === voiceId_1 )['name'];
+                const name_2 = voices.find( ({profileId}) => profileId === voiceId_2 )['name'];
+                const name_3 = voices.find( ({profileId}) => profileId === voiceId_3 )['name'];
+                const name_4 = voices.find( ({profileId}) => profileId === voiceId_4 )['name'];
+                const score_1 = (data['profilesRanking'][0]['score'])*100;
+                const score_2 = (data['profilesRanking'][1]['score'])*100;
+                const score_3 = (data['profilesRanking'][2]['score'])*100;
+                const score_4 = (data['profilesRanking'][3]['score'])*100;
+                //APIからの取得データをグラフで表示
+                const pie = new Highcharts.Chart('pie',{
+                  chart: {
+                    backgroundColor: '#fefbf7',
+                    borderColor: '#4C4B4A',
+                    borderWidth: 2,
+                    borderRadius: 30,
+                  },
+                  title: {//タイトル設定
+                    style: {
+                      fontSize: '20px',
+                      fontWeight: 'bold' 
+                    },
+                    text: 'あなたの声には下記成分を含んでいる可能性があります・・・！！'
+                  },
+                  plotOptions: {//オプション設定
+                    pie: {               
+                      dataLabels: {
+                        color: 'black',
+                        formatter: function() {
+                          return '<b>'+ this.point.name +'</b>'+'<br>'+ Math.round(this.percentage*10)/10 +'%';
                         },
-                        text: 'あなたの声の成分は・・・'
-                      },
-                      plotOptions: {//オプション設定
-                        pie: {               
-                          dataLabels: {
-                            color: 'black',
-                            formatter: function() {
-                              return '<b>'+ this.point.name +'</b>'+'<br>'+ Math.round(this.percentage*10)/10 +'%';
-                            },
-                            enabled: true
-                          }
-                        }
-                      },
-                      series: [{//データ設定
-                        type: 'pie',
-                        name:'メインカラー',
-                        data: [
-                          {name: results1_1, y: results1_2},
-                          {name: results2_1, y: results2_2},
-                          {name: results3_1, y: results3_2},
-                          {name: results4_1, y: results4_2},
-                          //{name:'白',y:12, color:'#ffffff'},
-                          //{name:'黒',y:8, color:'#000000'},
-                          //{name:'灰',y:8, color:'#e8ecef'},
-                          //{name:'青',y:8, color:'#0f2350'},
-                          //{name:'赤',y:5, color:'#d7003a'},
-                          //{name:'黄',y:3, color:'#f6ad49'},
-                          //{name:'緑',y:2, color:'#82ae46'},
-                          //{name:'橙',y:2, color:'#ff9000'},
-                          //{name:'茶',y:1, color:'#cd8c5c'},
-                          //{name:'紫',y:1, color:'#7a4171'}
-                        ],
-                        showInLegend: true//凡例の表示
-                      }]
-                                        
-                    });
-              }).catch(err => {
+                        enabled: true,
+                      }
+                    },
+                    series: {
+                      enableMouseTracking: false
+                    }
+                  },
+                  credits: {
+                    enabled: false,
+                  }, 
+                  series: [{//データ設定
+                    type: 'pie',
+                    data: [//分析結果画面に表示する名前・スコアデータ
+                      {name: name_1, y: score_1, color: '#f15c80'},
+                      {name: name_2, y: score_2, color: '#8085e9'},
+                      {name: name_3, y: score_3, color:'#f7a35c'},
+                      {name: name_4, y: score_4, color: '#90ed7d'},
+                    ],
+                    showInLegend: false//凡例の表示
+                  }]
+                });
+                //twitterシェア画面への結果表示に反映させるデータ取得
+                const twitter = document.getElementById('twitter');
+                if (score_4 > 0){
+                  twitter.href = "http://twitter.com/intent/tweet?text=" 
+                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 + '%0a' + name_3 + '%0a' + name_4 
+                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "Voice component" + '%0a' + "&url=http://localhost:3000/";
+                } else if (score_4 <= 0 && score_3 > 0){
+                  twitter.href = "http://twitter.com/intent/tweet?text=" 
+                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 + '%0a' + name_3 
+                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "Voice component" + '%0a' + "&url=http://localhost:3000/";
+                } else if (score_4 <= 0 && score_3 <= 0){
+                  twitter.href = "http://twitter.com/intent/tweet?text=" 
+                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 
+                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "Voice component" + '%0a' + "&url=http://localhost:3000/";
+                }
+              }).catch(err => {//録音失敗した場合のエラーメッセージを表示
                 console.log(err);
+                alert('音声の録音に失敗しました。マイクを確認していただき、再度録音をお願いします。')
+                //this.status = 'error'
+                //let re = document.getElementById("error_message");
+                //re.innerHTML = "音声の録音に失敗しました。再度録音をお願いします。";
               })
             });
             this.status = 'ready';
             this.recorder.addEventListener('start', () => {
+              let re = document.getElementById("sec");
+              re.innerHTML = '録音終了まであと5秒';
+              let sec = 4;
+              let countDownTime =  setInterval( () => {
+                remainingTime = sec--;
+                str = '録音終了まであと'+remainingTime+'秒';
+                re = document.getElementById("sec");
+                re.innerHTML = str;
+                if( sec === 0 ){
+                  clearInterval(countDownTime);
+                };
+              }, 1000);
               setTimeout( () => {
-                alert('stop');
+                //alert('stop');
                 this.recorder.stop();
               }, 5000);
             });
-
           });
       }
     });

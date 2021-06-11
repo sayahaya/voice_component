@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   def top
     gon.url = Settings.speaker_identification.url
     gon.subscription_key = Settings.speaker_identification.subscription_key
-    gon.voices = StaticPage.all
+    gon.voices = StaticPage.all #  name, profileIdカラム 後程モデル名変更予定
   end
 
   def help; end

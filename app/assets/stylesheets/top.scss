@@ -1,0 +1,182 @@
+body.top {
+  background-color: #fefbf7;
+}
+/*トップページ*/
+.logo_1 {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 80px;
+  position: absolute;
+  top: 12%;
+  left: 3%;
+  z-index: 1;
+}
+.logo_2 {
+  font-family: 'Kosugi', sans-serif;
+  color: #4C4B4A;
+  font-size: 40px;
+  position: absolute;
+  top: 6%;
+  left: 3%;
+  z-index: 1;
+}
+.link {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  z-index: 1;
+}
+.link a{
+  font-family: 'Kosugi', sans-serif;
+  color: #4C4B4A;
+  font-size: 25px;
+  text-decoration:underline;
+  text-decoration-color:#4C4B4A;
+  line-height: 3;
+}
+.btn-list {
+  position: relative;
+  height: 1000px;
+  width: 1550px;
+}
+.background-image {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+.record-btn {
+  background: #e96e63;
+  position: absolute;
+  top: 65%;
+  right:13%; 
+  padding: 8px 20px;
+  color: #fff;
+  border: 3px solid #eee;
+  border-radius: 10px;
+  font-family: 'Kosugi', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  transition: .2s;
+}
+.record-btn:hover {
+  transform: scale(1.05);
+  text-decoration:underline;
+  text-decoration-color:#fff;
+}
+.recording-btn {
+  background: #e96e63;
+  position: absolute;
+  top: 65%;
+  right:20%; 
+  padding: 8px 20px;
+  color: #fff;
+  border: 3px solid #eee;
+  border-radius: 10px;
+  font-family: 'Kosugi', sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+.result-btn {
+  background: #007bff;
+  position: absolute;
+  top: 60%;
+  right: 19.3%;
+  margin:0;
+  color: #fff;
+  padding: 8px 20px;
+  border: 3px solid #eee;
+  border-radius: 10px;
+  font-family: 'Kosugi', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  transition: .2s;
+}
+.result-btn:hover{
+  transform: scale(1.1);
+  text-decoration:underline;
+  text-decoration-color:#fff;
+}
+.reRecording-btn {
+  background: #e96e63;
+  position: absolute;
+  top: 70%;
+  right: 19.5%; 
+  padding: 8px 20px;
+  color: #fff;
+  border: 3px solid #eee;
+  border-radius: 10px;
+  font-family: 'Kosugi', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  transition: .2s;
+}
+.reRecording-btn:hover {
+  transform: scale(1.1);
+  text-decoration:underline;
+  text-decoration-color:#fff;
+}
+
+/*結果画面*/
+.resultTitle {
+  font-family: 'Kosugi', sans-serif;
+  color: #4C4B4A;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.pie {
+  width: 1000px;
+  height: 600px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto; 
+}
+.button-container{
+  font-family: 'Rubik Mono One', sans-serif;
+  width:100%;
+  text-align:center;
+}
+
+.button-wrapper{
+  display: inline-block;
+  margin-top: 1.9vh;
+  margin-bottom: 4vh;
+}
+
+.button {
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px;
+}
+
+.button-top {
+  color: #4C4B4A;
+  background: white;
+  border-color:#CCCCCC;
+  transition: .3s;
+}
+.button-top:hover{
+  text-decoration:underline;
+  text-decoration-color:#4C4B4A;
+}
+.button-tw{
+  color: white;
+  margin-left:30px;
+  background: #00acee;
+}
+.button-tw::before {
+  font-family: 'Font Awesome 5 Brands';
+  content: '\f099';
+}
+
+.button-lg{
+  border-radius: 15px;
+  font-size: 30px;
+  padding: 1.8vh 2.6vw;
+}
+
