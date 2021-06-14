@@ -1,2 +1,21 @@
-<h1>StaticPages#help</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+<div class="container">
+  <div class="help-container">
+    <div class="help-title">Voice componentとは</div><br>
+    <div class="help-subtitle">声の成分を有名なあの人？で可視化するツールです</div><br>
+    <div class="how-to-use">分析方法</div><br>
+    <div class="image">
+      <%= image_tag 'recording.png', size: '600x338' %>
+      <%= image_tag 'result.png', size: '600x363' %>
+    </div>
+    <div class="note">（注意）：分析結果はあくまで目安であり結果は都度異なります。たとえ分析結果が期待にそぐわないものだとしても当方では一切の責任を負いかねます。</div>
+  </div>
+</div>
+
+<div class="button-container">
+  <div class="button-wrapper">
+    <%= link_to root_path, class: "button button-top button-lg", "data-turbolinks": false do %>
+      <i class="fas fa-home"></i>&nbsp;トップページへ
+    <% end %>
+  </div>
+</div>
+                        

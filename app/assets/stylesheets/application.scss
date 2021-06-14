@@ -1,4 +1,12 @@
 @import 'top';
+@import 'help';
+@import 'inquiry';
+@import 'privacy';
+@import 'terms' ;
 @import 'bootstrap';
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+body {
+  background-color: #fefbf7;
+}

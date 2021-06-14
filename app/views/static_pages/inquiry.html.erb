@@ -1,2 +1,19 @@
-<h1>StaticPages#inquiry</h1>
-<p>Find me in app/views/static_pages/inquiry.html.erb</p>
+<div class="container">
+  <div class="inquiry-container">
+    <div class="inquiry-title">お問い合わせ先</div>
+    <div class="inquiry-text">
+      『 Voice component 』をご利用いただきありがとうございます。<br>
+      不具合のご報告や、その他ご意見・ご要望・お問い合わせなどは下記TwitterアカウントのDMまで送っていただけると幸いです。
+    </div>
+    <div class="inquiry-address">@yama2_0506</div>
+  </div>
+</div>
+
+<div class="button-container">
+  <div class="button-wrapper">
+    <%= link_to root_path, class: "button button-top button-lg", "data-turbolinks": false do %>
+      <i class="fas fa-home"></i>&nbsp;トップページへ
+    <% end %>
+  </div>
+</div>
+ 
