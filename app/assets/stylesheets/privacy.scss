@@ -1,0 +1,38 @@
+.privacy-container {
+  font-family: 'Rubik Mono One', sans-serif;
+  color: #4C4B4A;
+  width: 800px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  padding: 10px;
+  border: 1px solid #333333;
+  border-radius: 30px;
+}
+.privacy-title {
+  text-align: center;
+  font-size: 40px;
+  text-decoration: underline;
+}
+.main-privacy {
+  font-size:1vw;
+  font-weight: normal;
+  margin-top:1vh;
+  margin-left:2vh;
+  margin-right:2vh;
+  margin-bottom: 2vh;
+}
+.number-privacy{
+  font-size:1.5vw;
+  margin-left: 2vh;
+  margin-right: 2vh;
+}
+.main-privacy > div{
+  padding-left:3vw;
+}
+.main-privacy > div > div{
+  padding-left:3vw;
+}
+          
