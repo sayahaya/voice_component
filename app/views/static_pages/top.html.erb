@@ -3,7 +3,7 @@
   <meta name=”viewport” content=”width=device-width, initial-scale=1”>
   <style>@import url('https://fonts.googleapis.com/css2?family=Kosugi&family=Rubik+Mono+One&display=swap');</style>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-  <script src="http://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
   <!--<script src = "https://code.highcharts.com/highcharts.src.js" ></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
@@ -68,8 +68,6 @@
           <a href="" id="twitter" class="button button-tw button-lg" rel="nofollow" target="_blank">
             分析結果をツイート</i>
           </a>
-          <!--<a href="" id="ss" download="html_ss.png">スクリーンショット(document.body全体)をダウンロード</a><br>-->
-          <!--<button class="btn btn-primary" type="button" @click="preview">プレビュー表示</button>-->
         </div>
       </div>
     </div>
@@ -107,22 +105,6 @@
         changeScreen () {
           this.screen = 'resultScreen';
         }
-        //preview (){
-          //html2canvas(document.getElementById("pie"))
-          //.then( function(canvas){
-            //let result = document.getElementById("result");
-            //result.innerHTML = '';
-            //result.appendChild(canvas);  
-          //});
-          //html2canvas(document.getElementById("pie"))
-          //.then( function(canvas){
-            //let imgData = canvas.toBlob();
-            //let imgData = canvas.toDataURL();
-            //let b64_encoded_binary = imgData.split(',')[1];
-            //document.getElementById("ss").src = b64_encoded_binary; 
-            
-          //});
-        //}
       },
       mounted() {
         //  マイクにアクセス
