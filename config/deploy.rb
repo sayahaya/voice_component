@@ -4,6 +4,7 @@ lock "~> 3.16.0"
 set :application, "voice_component"
 set :repo_url, "git@github.com:sayahaya/voice_component.git"
 set :user, 'hayato'
+set :branch, 'main'
 set :deploy_to, "/var/www/voice_component"
 set :linked_files, %w[config/master.key config/database.yml]
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle]
