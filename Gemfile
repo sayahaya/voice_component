@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
+gem 'mini_racer', platforms: :ruby
 
 gem 'rails', '~> 6.1.3'
 gem 'mysql2', '~> 0.5'
@@ -35,6 +36,15 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails_best_practices'
+  gem 'capistrano'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-nginx'
+  gem 'capistrano-yarn'
 end
 
 group :test do
