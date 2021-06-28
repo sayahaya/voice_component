@@ -35,7 +35,6 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rails_best_practices'
   gem 'capistrano'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'

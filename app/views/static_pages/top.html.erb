@@ -4,7 +4,6 @@
   <style>@import url('https://fonts.googleapis.com/css2?family=Kosugi&family=Rubik+Mono+One&display=swap');</style>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
-  <!--<script src = "https://code.highcharts.com/highcharts.src.js" ></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -15,21 +14,13 @@
     <!-- 録音の開始/録音中/結果を見るボタンを設置する部分 -->
     <div class="container-fluid" v-if="screen=='recordingScreen'" key="recordingScreen">
       <p class="logo_2">声の成分分析ツール</p>
-      <p class="logo_1">Voice<br>component.</p>
-
-      <div class="link">
-        <%= link_to "Voice componentとは？", help_path %><br>
-        <%= link_to "利用規約", terms_path %><br>
-        <%= link_to "プライバシーポリシー", privacy_path %><br>
-        <%= link_to "お問い合わせ先", inquiry_path %>
-      </div>
-
-      <div class="btn-list"> 
+      <p class="logo_1">Voice&thinsp;<br class="br-sp">component</p>
+      
+      <div class="main">
         <%= image_tag 'face.png', class: 'background-image' %>
-
         <button class="record-btn" type="button"  v-if="status=='ready'" @click="startRecording">
           さっそく声の成分をチェック!!&nbsp;<i class="fas fa-microphone fa-lg"></i><br>
-          (ボタンを押して５秒間マイクに話しかけて下さい)
+          (５秒間のマイク録音が開始されます)
         </button>
        
         <button class="recording-btn" type="button" v-if="status=='recording'">
@@ -46,6 +37,13 @@
           もう一度声を録音する&nbsp;<i class="fas fa-microphone fa-lg"></i>
         </button>
       </div>
+    
+      <div class="link">
+        <%= link_to "Voice componentとは？", help_path %><br>
+        <%= link_to "利用規約", terms_path %><br>
+        <%= link_to "プライバシーポリシー", privacy_path %><br>
+        <%= link_to "お問い合わせ先", inquiry_path %>
+      </div>
 
       <p>©2021 Voice component</p>
     </div>
@@ -55,7 +53,6 @@
       <div class="resultTitle"><i class="fas fa-search fa-lg" aria-hidden="true"></i>&nbsp;分析結果</div>
       <div class="pie" id="pie"></div>
       <br>
-      <!--<div id="result"></div>-->
       <br>
       <br>
       <div class="button-container">
@@ -158,10 +155,23 @@
                   },
                   title: {//タイトル設定
                     style: {
-                      fontSize: '20px',
                       fontWeight: 'bold' 
                     },
                     text: 'あなたの声には下記成分を含んでいる可能性があります・・・！！'
+                  },
+                  responsive: {
+                    rules: [{
+                      condition: {
+                        maxWidth: 500
+                      },
+                      chartOptions: {
+                        title: {
+                          style: {
+                           fontSize: 10 
+                          }
+                        }
+                      }
+                    }]
                   },
                   plotOptions: {//オプション設定
                     pie: {               
@@ -196,22 +206,19 @@
                 if (score_4 > 0){
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
                   + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 + '%0a' + name_3 + '%0a' + name_4 
-                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "Voice component" + '%0a' + "&url=http://localhost:3000/";
+                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
                 } else if (score_4 <= 0 && score_3 > 0){
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
                   + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 + '%0a' + name_3 
-                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "Voice component" + '%0a' + "&url=http://localhost:3000/";
+                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
                 } else if (score_4 <= 0 && score_3 <= 0){
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
                   + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 
-                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "Voice component" + '%0a' + "&url=http://localhost:3000/";
+                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
                 }
               }).catch(err => {//録音失敗した場合のエラーメッセージを表示
                 console.log(err);
                 alert('音声の録音に失敗しました。マイクを確認していただき、再度録音をお願いします。');
-                //this.status = 'error'
-                //let re = document.getElementById("error_message");
-                //re.innerHTML = "音声の録音に失敗しました。再度録音をお願いします。";
               })
             });
             this.status = 'ready';
@@ -229,7 +236,6 @@
                 };
               }, 1000);
               setTimeout( () => {
-                //alert('stop');
                 this.recorder.stop();
               }, 5000);
             });
