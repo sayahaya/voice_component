@@ -1,8 +1,8 @@
 # config/puma/production.rb
-environment "production"
+environment 'production'
 
 # UNIX Socketへのバインド
-tmp_path = "#{File.expand_path("../../..", __FILE__)}/tmp"
+tmp_path = "#{File.expand_path('../..', __dir__)}/tmp"
 bind "unix://#{tmp_path}/sockets/puma.sock"
 
 # スレッド数とWorker数の指定
@@ -17,4 +17,3 @@ pidfile "#{tmp_path}/pids/puma.pid"
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
-

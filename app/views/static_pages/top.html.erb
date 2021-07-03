@@ -37,7 +37,8 @@
           もう一度声を録音する&nbsp;<i class="fas fa-microphone fa-lg"></i>
         </button>
       </div>
-    
+      
+      <div class="top_note">※マイクアクセスを許可にしてからご利用下さい。<br>※Internet Explorerではご利用出来ませんのでご了承下さい。</div>
       <div class="link">
         <%= link_to "Voice componentとは？", help_path %><br>
         <%= link_to "利用規約", terms_path %><br>
@@ -157,7 +158,7 @@
                     style: {
                       fontWeight: 'bold' 
                     },
-                    text: 'あなたの声には下記成分を含んでいる可能性があります・・・！！'
+                    text: 'あなたの声は下記成分を含んでいます・・・！！'
                   },
                   responsive: {
                     rules: [{
@@ -224,11 +225,11 @@
             this.status = 'ready';
             this.recorder.addEventListener('start', () => {
               let re = document.getElementById("sec");
-              re.innerHTML = '録音終了まであと5秒';
+              re.innerHTML = '録音中！(終了まであと5秒)';
               let sec = 4;
               let countDownTime =  setInterval( () => {
                 remainingTime = sec--;
-                str = '録音終了まであと'+remainingTime+'秒';
+                str = '録音中！(終了まであと'+remainingTime+'秒)';
                 re = document.getElementById("sec");
                 re.innerHTML = str;
                 if( sec === 0 ){
