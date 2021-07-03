@@ -1,22 +1,22 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock '~> 3.16.0'
 
-set :application, "voice_component"
-set :repo_url, "git@github.com:sayahaya/voice_component.git"
+set :application, 'voice_component'
+set :repo_url, 'git@github.com:sayahaya/voice_component.git'
 set :user, 'hayato'
-set :deploy_to, "/var/www/voice_component"
+set :deploy_to, '/var/www/voice_component'
 set :linked_files, %w[config/master.key config/database.yml]
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle]
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :puma_threds, [4, 16]
 set :puma_workers, 0
-set :puma_bind, "unix:///var/www/voice_component/shared/tmp/sockets/puma.sock"
-set :puma_state, "/var/www/voice_component/shared/tmp/pids/puma.state"
-set :puma_pid, "/var/www/voice_component/shared/tmp/pids/puma.pid"
-set :puma_access_log, "/var/www/voice_component/shared/log/puma.error.log"
-set :puma_error_log, "/var/www/voice_component/shared/log/puma.access.log"
+set :puma_bind, 'unix:///var/www/voice_component/shared/tmp/sockets/puma.sock'
+set :puma_state, '/var/www/voice_component/shared/tmp/pids/puma.state'
+set :puma_pid, '/var/www/voice_component/shared/tmp/pids/puma.pid'
+set :puma_access_log, '/var/www/voice_component/shared/log/puma.error.log'
+set :puma_error_log, '/var/www/voice_component/shared/log/puma.access.log'
 set :puma_preload_app, true
-set :branch, ENV['BRANCH'] || "main"
+set :branch, ENV['BRANCH'] || 'main'
 set :puma_systemctl_bin, '/usr/bin/systemctl'
 set :puma_systemctl_user, :system
 
@@ -24,13 +24,13 @@ namespace :deploy do
   desc 'upload important files'
   task :upload do
     on roles(:app) do
-      sudo :mkdir, '-p', "/var/www/voice_component/shared/config"
-      sudo %[chown -R #{fetch(:user)}.#{fetch(:user)} /var/www/#{fetch(:application)}]
+      sudo :mkdir, '-p', '/var/www/voice_component/shared/config'
+      sudo %(chown -R #{fetch(:user)}.#{fetch(:user)} /var/www/#{fetch(:application)})
       sudo :mkdir, '-p', '/etc/nginx/sites-enabled'
       sudo :mkdir, '-p', '/etc/nginx/sites-available'
 
-      upload!('config/database.yml', "/var/www/voice_component/shared/config/database.yml")
-      upload!('config/master.key', "/var/www/voice_component/shared/config/master.key")
+      upload!('config/database.yml', '/var/www/voice_component/shared/config/database.yml')
+      upload!('config/master.key', '/var/www/voice_component/shared/config/master.key')
     end
   end
 

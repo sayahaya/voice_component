@@ -19,6 +19,12 @@
     margin-top: 3%;
     z-index: 1;
   }
+  .top_note {
+    font-family: 'Kosugi', sans-serif;
+    color: #4C4B4A;
+    line-height: 2;
+    font-size: 12px;
+  }
   .link {
     display: inline-block;
     top: 75%;
@@ -67,7 +73,7 @@
     background: #e96e63;
     position: absolute;
     top: 68%;
-    left:29%; 
+    left:24%; 
     padding: 8px 20px;
     color: #fff;
     border: 3px solid #eee;
@@ -140,6 +146,12 @@
     margin-top: 3%;
     z-index: 1;
   }
+  .top_note {
+    font-family: 'Kosugi', sans-serif;
+    color: #4C4B4A;
+    line-height: 2;
+    font-size: 15px;
+  }
   .link {
     display: inline-block;
     top: 75%;
@@ -188,7 +200,7 @@
     background: #e96e63;
     position: absolute;
     top: 70%;
-    left:35.5%; 
+    left:33%; 
     padding: 8px 20px;
     color: #fff;
     border: 3px solid #eee;
@@ -256,9 +268,18 @@
     left: 3%;
     z-index: 1;
   }
+  .top_note {
+    position: absolute;
+    top: 45%;
+    left: 3%;
+    font-family: 'Kosugi', sans-serif;
+    color: #4C4B4A;
+    line-height: 2;;
+    font-size: 20px;
+  }
   .link {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 3%;
     z-index: 1;
   }
@@ -303,7 +324,7 @@
     background: #e96e63;
     position: absolute;
     top: 69%;
-    right:19%; 
+    right:17.5%; 
     padding: 8px 20px;
     color: #fff;
     border: 3px solid #eee;
