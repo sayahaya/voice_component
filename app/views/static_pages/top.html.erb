@@ -113,16 +113,15 @@
               this.audioData.push(e.data);
               this.audioExtension = this.getExtension(e.data.type);
             });
-            //ストップ時に音声データを生成
             this.recorder.addEventListener('stop', () => {
               audioBlob = new Blob(this.audioData);
               this.status = 'finishRecording';
             });
             document.getElementById("btn").addEventListener('click', () => {
-              fetch(  {
+              fetch( gon.url, {
                 method: 'POST',
                 headers: {
-                  "Ocp-Apim-Subscription-Key": 
+                  "Ocp-Apim-Subscription-Key": gon.subscription_key,
                   "Content-Type":"audio/wav"
                 },
                 body: audioBlob
