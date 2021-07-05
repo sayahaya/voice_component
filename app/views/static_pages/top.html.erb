@@ -1,6 +1,5 @@
 <html>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
-  <meta name=”viewport” content=”width=device-width, initial-scale=1”>
+<head>
   <style>@import url('https://fonts.googleapis.com/css2?family=Kosugi&family=Rubik+Mono+One&display=swap');</style>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
@@ -114,22 +113,23 @@
               this.audioData.push(e.data);
               this.audioExtension = this.getExtension(e.data.type);
             });
+            //ストップ時に音声データを生成
             this.recorder.addEventListener('stop', () => {
               audioBlob = new Blob(this.audioData);
               this.status = 'finishRecording';
             });
             document.getElementById("btn").addEventListener('click', () => {
-              fetch( gon.url, {
+              fetch(  {
                 method: 'POST',
                 headers: {
-                  "Ocp-Apim-Subscription-Key": gon.subscription_key,
+                  "Ocp-Apim-Subscription-Key": 
                   "Content-Type":"audio/wav"
                 },
                 body: audioBlob
               }).then(response => {
                 return response.json();
               }).then(data => {
-                //console.log(JSON.stringify(data));
+                console.log(JSON.stringify(data));
                 //console.log(gon.voices);
                 //DBからのデータを取得
                 const voices = gon.voices; 
@@ -142,10 +142,10 @@
                 const name_2 = voices.find( ({profileId}) => profileId === voiceId_2 )['name'];
                 const name_3 = voices.find( ({profileId}) => profileId === voiceId_3 )['name'];
                 const name_4 = voices.find( ({profileId}) => profileId === voiceId_4 )['name'];
-                const score_1 = (data['profilesRanking'][0]['score'])*100;
-                const score_2 = (data['profilesRanking'][1]['score'])*100;
-                const score_3 = (data['profilesRanking'][2]['score'])*100;
-                const score_4 = (data['profilesRanking'][3]['score'])*100;
+                const api_score_1 = (data['profilesRanking'][0]['score'])*100; //Apiレスポンスのscore
+                const api_score_2 = (data['profilesRanking'][1]['score'])*100;
+                const api_score_3 = (data['profilesRanking'][2]['score'])*100;
+                const api_score_4 = (data['profilesRanking'][3]['score'])*100;
                 //APIからの取得データをグラフで表示
                 const pie = new Highcharts.Chart('pie',{
                   chart: {
@@ -168,7 +168,7 @@
                       chartOptions: {
                         title: {
                           style: {
-                           fontSize: 10 
+                           fontSize: 13 
                           }
                         }
                       }
@@ -194,28 +194,35 @@
                   series: [{//データ設定
                     type: 'pie',
                     data: [//分析結果画面に表示する名前・スコアデータ
-                      {name: name_1, y: score_1, color: '#f15c80'},
-                      {name: name_2, y: score_2, color: '#8085e9'},
-                      {name: name_3, y: score_3, color:'#f7a35c'},
-                      {name: name_4, y: score_4, color: '#90ed7d'},
+                      {name: name_1, y: api_score_1, color: '#f15c80'},
+                      {name: name_2, y: api_score_2, color: '#8085e9'},
+                      {name: name_3, y: api_score_3, color:'#f7a35c'},
+                      {name: name_4, y: api_score_4, color: '#90ed7d'},
                     ],
                     showInLegend: false//凡例の表示
                   }]
                 });
                 //twitterシェア画面への結果表示に反映させるデータ取得
                 const twitter = document.getElementById('twitter');
-                if (score_4 > 0){
+                const total_score = api_score_1 + api_score_2 + api_score_3 + api_score_4;
+                const result_score_1 = Math.round((api_score_1 / total_score) *1000)/10 +'％';
+                const result_score_2 = Math.round((api_score_2 / total_score) *1000)/10 +'％';
+                const result_score_3 = Math.round((api_score_3 / total_score) *1000)/10 +'％';
+                const result_score_4 = Math.round((api_score_4 / total_score) *1000)/10 +'％';
+                if (api_score_4 > 0){
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
-                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 + '%0a' + name_3 + '%0a' + name_4 
-                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
-                } else if (score_4 <= 0 && score_3 > 0){
+                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%20%20' + result_score_1 + '%0a' + name_2 + '%20%20' + result_score_2 + '%0a' 
+                  + name_3 + '%20%20' + result_score_3 + '%0a' + name_4 + '%20%20' + result_score_4
+                  + '%0a%0a' + "の成分を含んでいます!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
+                } else if (api_score_4 <= 0 && api_score_3 > 0){
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
-                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 + '%0a' + name_3 
-                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
-                } else if (score_4 <= 0 && score_3 <= 0){
+                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%20%20' + result_score_1 + '%0a' + name_2 + '%20%20' + result_score_2 + '%0a' 
+                  + name_3 + '%20%20' + result_score_3 + '%0a' 
+                  + '%0a%0a' + "の成分を含んでいます!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
+                } else if (api_score_4 <= 0 && api_score_3 <= 0){
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
-                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%0a' + name_2 
-                  + '%0a%0a' + "の成分を含んでいる可能性があります!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
+                  + "あなたの声は・・・" + '%0a%0a' + name_1 + '%20%20' + result_score_1 + '%0a' + name_2 + '%20%20' + result_score_2 + '%0a' 
+                  + '%0a%0a' + "の成分を含んでいます!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
                 }
               }).catch(err => {//録音失敗した場合のエラーメッセージを表示
                 console.log(err);
