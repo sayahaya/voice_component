@@ -114,22 +114,20 @@
               this.audioExtension = this.getExtension(e.data.type);
             });
             this.recorder.addEventListener('stop', () => {
-              audioBlob = new Blob(this.audioData);
+              audioBlob = new Blob(this.audioData);//,{ 'type' : 'audio/wav' } );
+              formData = new FormData();
+              formData.append("audio", audioBlob);
               this.status = 'finishRecording';
             });
             document.getElementById("btn").addEventListener('click', () => {
-              fetch( gon.url, {
-                method: 'POST',
-                headers: {
-                  "Ocp-Apim-Subscription-Key": gon.subscription_key,
-                  "Content-Type":"audio/wav"
-                },
-                body: audioBlob
-              }).then(response => {
-                return response.json();
+               $.ajax({
+                url: '/result',  
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                data: formData
               }).then(data => {
-                console.log(JSON.stringify(data));
-                //console.log(gon.voices);
                 //DBからのデータを取得
                 const voices = gon.voices; 
                 //API仕様の音声データを取得
@@ -144,7 +142,7 @@
                 const api_score_1 = (data['profilesRanking'][0]['score'])*100; //Apiレスポンスのscore
                 const api_score_2 = (data['profilesRanking'][1]['score'])*100;
                 const api_score_3 = (data['profilesRanking'][2]['score'])*100;
-                const api_score_4 = (data['profilesRanking'][3]['score'])*100;
+                const api_score_4 = (data['profilesRanking'][3]['score'])*100; 
                 //APIからの取得データをグラフで表示
                 const pie = new Highcharts.Chart('pie',{
                   chart: {
@@ -171,8 +169,8 @@
                           }
                         }
                       }
-                    }]
-                  },
+                   }]
+                 },
                   plotOptions: {//オプション設定
                     pie: {               
                       dataLabels: {
@@ -222,7 +220,7 @@
                   twitter.href = "http://twitter.com/intent/tweet?text=" 
                   + "あなたの声は・・・" + '%0a%0a' + name_1 + '%20%20' + result_score_1 + '%0a' + name_2 + '%20%20' + result_score_2 + '%0a' 
                   + '%0a%0a' + "の成分を含んでいます!!    " + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
-                }
+                }                
               }).catch(err => {//録音失敗した場合のエラーメッセージを表示
                 console.log(err);
                 alert('音声の録音に失敗しました。マイクを確認していただき、再度録音をお願いします。');
@@ -246,9 +244,9 @@
                 this.recorder.stop();
               }, 5000);
             });
-          });
-      }
-    });
+          })
+       }
+     });
   </script>
 </body>
 </html>
