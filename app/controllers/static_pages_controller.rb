@@ -14,8 +14,8 @@ class StaticPagesController < ApplicationController
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     request = Net::HTTP::Post.new(url)
-    request["Content-Type"] = 'audio/x-pcm;bit=16;rate=16000;channels=1'
-    request["Ocp-Apim-Subscription-Key"] = Settings.speaker_identification.subscription_key
+    request['Content-Type'] = 'audio/x-pcm;bit=16;rate=16000;channels=1'
+    request['Ocp-Apim-Subscription-Key'] = Settings.speaker_identification.subscription_key
     file = File.read(@audio)
     request.body = file
     response = http.request(request)
