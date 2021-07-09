@@ -2,9 +2,25 @@ class StaticPagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def top
-    gon.url = Settings.speaker_identification.url
-    gon.subscription_key = Settings.speaker_identification.subscription_key
-    gon.voices = StaticPage.all #  name, profileIdカラム 後程モデル名変更予定
+    gon.voices = Voice.all
+  end
+
+  def result
+    @audio = params[:audio]
+    require 'uri'
+    require 'net/http'
+    require 'openssl'
+    url = URI(Settings.speaker_identification.url)
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Post.new(url)
+    request["Content-Type"] = 'audio/x-pcm;bit=16;rate=16000;channels=1'
+    request["Ocp-Apim-Subscription-Key"] = Settings.speaker_identification.subscription_key
+    file = File.read(@audio)
+    request.body = file
+    response = http.request(request)
+    @result = response.read_body
+    render json: @result
   end
 
   def help; end
