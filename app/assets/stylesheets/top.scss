@@ -1,5 +1,6 @@
 /*トップページ*/
 @media screen and (max-width:500px) {
+  .iphone {
   .container-fluid{
     text-align: center;
   }
@@ -121,8 +122,8 @@
     text-decoration:underline;
     text-decoration-color:#fff;
   }
+  }
 }
-
 @media screen and (min-width:501px) and ( max-width:1024px) {
   .container-fluid{
     text-align: center;
@@ -376,6 +377,7 @@
 
 /*結果画面*/
 @media screen and ( max-width:500px){
+  .iphone {
   .resultTitle {
     font-family: 'Kosugi', sans-serif;
     color: #4C4B4A;
@@ -438,6 +440,7 @@
     border-radius: 10px;
     font-size: 15px;
     padding: 1.8vh 2.6vw;
+  }
   }
 }
 
