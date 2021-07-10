@@ -1,7 +1,11 @@
 /*トップページ*/
 @media screen and (max-width:500px) {
   .container-fluid{
-    text-align: center;
+    display: flex;
+    //text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .logo_1 {
     font-family: 'Rubik Mono One', sans-serif;
@@ -42,9 +46,13 @@
   }
   .main {
     position: relative;
-    display: inline-block;
+    //display: inline-block;
     width: 320px;
     height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .background-image {
     width: 320px;
@@ -54,8 +62,13 @@
     -webkit-appearance: none;
     background: #e96e63;
     position: absolute;
-    top: 68%;
-    left:22%; 
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    //top: 68%;
+    //left:22%; 
     padding: 4px 10px;
     color: #fff;
     border: 2px solid #eee;
@@ -63,6 +76,7 @@
     font-family: 'Kosugi', sans-serif;
     font-size: 5px;
     text-align: center;
+    white-space: nowrap;
     //transition: .2s;
   }
   //.record-btn:hover {
