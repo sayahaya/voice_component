@@ -62,13 +62,13 @@
     font-family: 'Kosugi', sans-serif;
     font-size: 5px;
     text-align: center;
-    transition: .2s;
+    //transition: .2s;
   }
-  .record-btn:hover {
-    transform: scale(1.05);
-    text-decoration:underline;
-    text-decoration-color:#fff;
-  }
+  //.record-btn:hover {
+    //transform: scale(1.05);
+    //text-decoration:underline;
+    //text-decoration-color:#fff;
+  //}
   .recording-btn {
     background: #e96e63;
     position: absolute;
@@ -95,13 +95,13 @@
     font-family: 'Kosugi', sans-serif;
     font-size: 10px;
     text-align: center;
-    transition: .2s;
+    //transition: .2s;
   }
-  .result-btn:hover{
-    transform: scale(1.1);
-    text-decoration:underline;
-    text-decoration-color:#fff;
-  }
+  //.result-btn:hover{
+    //transform: scale(1.1);
+    //text-decoration:underline;
+    //text-decoration-color:#fff;
+  //}
   .reRecording-btn {
     background: #e96e63;
     position: absolute;
@@ -114,13 +114,13 @@
     font-family: 'Kosugi', sans-serif;
     font-size: 10px;
     text-align: center;
-    transition: .2s;
+    //transition: .2s;
   }
-  .reRecording-btn:hover {
-    transform: scale(1.1);
-    text-decoration:underline;
-    text-decoration-color:#fff;
-  }
+  //.reRecording-btn:hover {
+    //transform: scale(1.1);
+    //text-decoration:underline;
+    //text-decoration-color:#fff;
+  //}
 }
 @media screen and (min-width:501px) and ( max-width:1024px) {
   .container-fluid{
@@ -271,7 +271,6 @@
     position: absolute;
     top: 45%;
     left: 3%;
-    font-family: 'Kosugi', sans-serif;
     color: #4C4B4A;
     line-height: 2;;
     font-size: 20px;
@@ -417,12 +416,12 @@
     color: #4C4B4A;
     background: white;
     border-color:#CCCCCC;
-    transition: .3s;
+    //transition: .3s;
   }
-  .button-top:hover{
-    text-decoration:underline;
-    text-decoration-color:#4C4B4A;
-  }
+  //.button-top:hover{
+    //text-decoration:underline;
+    //text-decoration-color:#4C4B4A;
+  //}
   .button-tw{
     color: white;
     margin-left:2px;
