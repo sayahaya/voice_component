@@ -51,6 +51,7 @@
     height: 360px;
   }
   .record-btn {
+    -webkit-appearance: none;
     background: #e96e63;
     position: absolute;
     top: 68%;
@@ -70,6 +71,7 @@
     //text-decoration-color:#fff;
   //}
   .recording-btn {
+    -webkit-appearance: none;
     background: #e96e63;
     position: absolute;
     top: 68%;
@@ -83,6 +85,7 @@
     text-align: center;
   }
   .result-btn {
+    -webkit-appearance: none;
     background: #007bff;
     position: absolute;
     top: 63%;
@@ -390,6 +393,7 @@
     margin-right: auto; 
   }
   .button-container{
+    -webkit-appearance: none;
     font-family: 'Rubik Mono One', sans-serif;
     width:100%;
     text-align:center;
