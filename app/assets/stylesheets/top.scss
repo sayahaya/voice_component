@@ -2,7 +2,6 @@
 @media screen and (max-width:500px) {
   .container-fluid{
     display: flex;
-    //text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -46,7 +45,6 @@
   }
   .main {
     position: relative;
-    //display: inline-block;
     width: 320px;
     height: 360px;
     display: flex;
@@ -62,11 +60,6 @@
     -webkit-appearance: none;
     background: #e96e63;
     position: absolute;
-    //top: 50%;
-    //left: 50%;
-    //-ms-transform: translate(-50%,-50%);
-    //-webkit-transform: translate(-50%,-50%);
-    //transform: translate(-50%,-50%);
     top: 68%;
     left:22%; 
     padding: 4px 10px;
@@ -77,13 +70,13 @@
     font-size: 10px;
     text-align: center;
     white-space: nowrap;
-    //transition: .2s;
+    transition: .2s;
   }
-  //.record-btn:hover {
-    //transform: scale(1.05);
-    //text-decoration:underline;
-    //text-decoration-color:#fff;
-  //}
+  .record-btn:hover {
+    transform: scale(1.05);
+    text-decoration:underline;
+    text-decoration-color:#fff;
+  }
   .recording-btn {
     -webkit-appearance: none;
     background: #e96e63;
@@ -113,13 +106,13 @@
     font-size: 15px;
     text-align: center;
     white-space: nowrap;
-    //transition: .2s;
+    transition: .2s;
   }
-  //.result-btn:hover{
-    //transform: scale(1.1);
-    //text-decoration:underline;
-    //text-decoration-color:#fff;
-  //}
+  .result-btn:hover{
+    transform: scale(1.1);
+    text-decoration:underline;
+    text-decoration-color:#fff;
+  }
   .reRecording-btn {
     -webkit-appearance: none;
     background: #e96e63;
@@ -134,13 +127,13 @@
     font-size: 15px;
     text-align: center;
     white-space: nowrap;
-    //transition: .2s;
+    transition: .2s;
   }
-  //.reRecording-btn:hover {
-    //transform: scale(1.1);
-    //text-decoration:underline;
-    //text-decoration-color:#fff;
-  //}
+  .reRecording-btn:hover {
+    transform: scale(1.1);
+    text-decoration:underline;
+    text-decoration-color:#fff;
+  }
 }
 @media screen and (min-width:501px) and ( max-width:1024px) {
   .container-fluid{
@@ -437,12 +430,12 @@
     color: #4C4B4A;
     background: white;
     border-color:#CCCCCC;
-    //transition: .3s;
+    transition: .3s;
   }
-  //.button-top:hover{
-    //text-decoration:underline;
-    //text-decoration-color:#4C4B4A;
-  //}
+  .button-top:hover{
+    text-decoration:underline;
+    text-decoration-color:#4C4B4A;
+  }
   .button-tw{
     color: white;
     margin-left:2px;
