@@ -3,6 +3,8 @@ class StaticPagesController < ApplicationController
 
   def top
     gon.voices = Voice.all
+    message = TopMessage.order("RAND()").limit(1).pluck(:message)
+    @message = message.first
   end
 
   def result

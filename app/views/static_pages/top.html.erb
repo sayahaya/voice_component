@@ -17,11 +17,16 @@
       
       <div class="main">
         <%= image_tag 'face.png', class: 'background-image' %>
-       <button class="record-btn" type="button"  v-if="status=='ready'" @click="startRecording">
+
+        <button class="record-btn" type="button" v-if="status=='ready'" @click="startRecording">
           さっそく声の成分をチェック!!&nbsp;<i class="fas fa-microphone fa-lg"></i><br>
-          (５秒間のマイク録音が開始されます)
+          (５秒間のマイク録音が開始されます)<br>
+          <div class="message">
+            ※何を話すかお悩みの方へのアドバイス<br>
+            <%= @message %>
+          </div>
         </button>
-       
+
         <button class="recording-btn" type="button" v-if="status=='recording'">
           <span id="sec"></span>&nbsp;<i class="fas fa-microphone fa-lg"></i>
         </button>

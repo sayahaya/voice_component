@@ -56,12 +56,18 @@
     width: 320px;
     height: 360px;
   }
+  .message {
+    font-size: 8px;
+    font-family: 'Kosugi', sans-serif;
+    color: #fff;
+    white-space: nowrap;
+  }
   .record-btn {
     -webkit-appearance: none;
     background: #e96e63;
     position: absolute;
-    top: 68%;
-    left:22%; 
+    top: 65%;
+    left:19.5%; 
     padding: 4px 10px;
     color: #fff;
     border: 2px solid #eee;
@@ -189,17 +195,21 @@
     width: 560px;
     height: 630px;
   }
+  .message {
+    font-size: 12px;
+    color: #fff;
+  }
   .record-btn {
     background: #e96e63;
     position: absolute;
-    top: 70%;
-    left:31%; 
+    top: 66%;
+    left:25%; 
     padding: 8px 20px;
+    font-size: 15px;
+    font-family: 'Kosugi', sans-serif;
     color: #fff;
     border: 3px solid #eee;
     border-radius: 10px;
-    font-family: 'Kosugi', sans-serif;
-    font-size: 11px;
     text-align: center;
     transition: .2s;
   }
@@ -312,17 +322,21 @@
     position: absolute;
     right: 0%;
   }
+  .message {
+    font-size: 13px;
+    color: #fff;
+  }
   .record-btn {
     background: #e96e63;
     position: absolute;
     top: 68%;
     right:15%; 
     padding: 8px 20px;
+    font-family: 'Kosugi', sans-serif;
+    font-size: 16px;
     color: #fff;
     border: 3px solid #eee;
     border-radius: 10px;
-    font-family: 'Kosugi', sans-serif;
-    font-size: 16px;
     text-align: center;
     transition: .2s;
   }

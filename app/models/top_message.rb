@@ -1,0 +1,2 @@
+class TopMessage < ApplicationRecord
+end
