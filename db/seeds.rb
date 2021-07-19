@@ -30,7 +30,7 @@ Voice.create!(
     },
     {
       profileId: "94fa8cdd-afac-4c29-976d-44f766201e39",
-      name: "川島（麒麟)"
+      name: "川島(麒麟)"
     },
     {
       profileId: "080fbf2f-0a38-443f-a5ea-272b35b5577d",
@@ -131,6 +131,114 @@ Voice.create!(
     {
       profileId: "fdc2b6c6-fa07-4a8d-ab07-00499cc9203f",
       name: "今田美桜"
+    },
+    {
+      profileId: "74460218-e36c-4b24-92f1-f4fe5c66a314",
+      name: "ローラ"
+    },
+    {
+      profileId: "cbcf6e2a-fc7d-4821-958c-f56d62cb7b76",
+      name: "あんり(ぼる塾)"
+    },
+
+    {
+      profileId: "8aaa1404-b257-48b1-89e2-51c06759189e",
+      name: "みちょぱ(池田美優)"
+    },
+
+    {
+      profileId: "cab3828b-0793-4ba4-b460-caaa07fa34c3",
+      name: "めるる(生見愛瑠)"
+    },
+
+    {
+      profileId: "18ebe634-e3fe-4d41-a530-5f0ad2c96f12",
+      name: "もう中学生"
+    },
+
+    {
+      profileId: "d2e90f23-9090-4c91-bd48-48fdde079ad2",
+      name: "芦田愛菜"
+    },
+
+    {
+      profileId: "dfed8b50-ecb8-4fe3-af7d-8fa6dd9da6a0",
+      name: "岡田健史"
+    },
+
+    {
+      profileId: "7f6a0371-4dfe-47c8-b6ba-4860f97b4df9",
+      name: "出川哲朗"
+    },
+
+    {
+      profileId: "47a2122e-cc95-44b3-b203-f04e726f6790",
+      name: "小峠英二"
+    },
+
+    {
+      profileId: "7eaffe07-6985-4372-9740-4209fe846054",
+      name: "松本まりか"
+    },
+
+    {
+      profileId: "a84df1fb-21cd-4004-9a3c-8fd14ba38909",
+      name: "森七菜"
+    },
+
+    {
+      profileId: "b9b3127f-92cc-4a22-878d-d838da67f08f",
+      name: "杉咲花"
+    },
+
+    {
+      profileId: "e5c2428f-5866-4953-87bc-e3e03c1afa83",
+      name: "成田凌"
+    },
+
+    {
+      profileId: "6aedb556-f9a0-49e7-be24-6b14270810aa",
+      name: "設楽(バナナマン)"
+    },
+
+    {
+      profileId: "2f877572-058d-4403-bf21-a3db79ff9733",
+      name: "川口春奈"
+    },
+
+    {
+      profileId: "351245a3-658a-43fe-b39e-0a6bdcf5910e",
+      name: "粗品(霜降り明星)"
+    },
+
+    {
+      profileId: "9c4767e5-2993-469d-aadb-f455ebe7a0c8",
+      name: "仲間由紀恵"
+    },
+
+    {
+      profileId: "66ea5e83-efc8-4847-9549-ccf8778f17ba",
+      name: "長澤まさみ"
+    },
+
+    {
+      profileId: "dff07a3f-764a-4523-af79-f41113f276f8",
+      name: "藤田ニコル"
+    },
+
+    {
+      profileId: "8dfd99f3-95af-4b78-bd5b-b068ca5b3832",
+      name: "飯尾和樹"
+    },
+
+    {
+      profileId: "ce14e1ac-f139-41c8-9d48-4f2c02a28449",
+      name: "野田クリスタル"
+    },
+
+    {
+      profileId: "644ab597-8382-48ea-bccc-20593b4059bf",
+      name: "林修"
     }
   ]
 )
