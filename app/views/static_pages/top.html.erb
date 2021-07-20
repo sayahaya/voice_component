@@ -7,9 +7,8 @@
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
-<body ontouchstart="" >
+<body ontouchstart="">
   <main id="app">
-
     <!-- 録音の開始/録音中/結果を見るボタンを設置する部分 -->
     <div class="container-fluid" v-if="screen=='recordingScreen'" key="recordingScreen">
       <p class="logo_2">声の成分分析ツール</p>
@@ -119,7 +118,7 @@
               this.audioExtension = this.getExtension(e.data.type);
             });
             this.recorder.addEventListener('stop', () => {
-              audioBlob = new Blob(this.audioData);//,{ 'type' : 'audio/wav' } );
+              audioBlob = new Blob(this.audioData);
               formData = new FormData();
               formData.append("audio", audioBlob);
               this.status = 'finishRecording';
@@ -133,21 +132,15 @@
                 dataType: 'json',
                 data: formData
               }).then(data => {
-                //DBからのデータを取得
-                const voices = gon.voices; 
-                //API仕様の音声データを取得
-                const voiceId_1 = data['profilesRanking'][0]['profileId'];
-                const voiceId_2 = data['profilesRanking'][1]['profileId'];
-                const voiceId_3 = data['profilesRanking'][2]['profileId'];
-                const voiceId_4 = data['profilesRanking'][3]['profileId'];
-                const name_1 = voices.find( ({profileId}) => profileId === voiceId_1 )['name'];
-                const name_2 = voices.find( ({profileId}) => profileId === voiceId_2 )['name'];
-                const name_3 = voices.find( ({profileId}) => profileId === voiceId_3 )['name'];
-                const name_4 = voices.find( ({profileId}) => profileId === voiceId_4 )['name'];
-                const api_score_1 = (data['profilesRanking'][0]['score'])*100; //Apiレスポンスのscore
-                const api_score_2 = (data['profilesRanking'][1]['score'])*100;
-                const api_score_3 = (data['profilesRanking'][2]['score'])*100;
-                const api_score_4 = (data['profilesRanking'][3]['score'])*100; 
+                //サーバーからAPIレスポンスを取得
+                const name_1 = data['name_1'];
+                const name_2 = data['name_2'];
+                const name_3 = data['name_3'];
+                const name_4 = data['name_4'];
+                const api_score_1 = data['score_1']; //Apiレスポンスのscore
+                const api_score_2 = data['score_2'];
+                const api_score_3 = data['score_3'];
+                const api_score_4 = data['score_4']; 
                 //APIからの取得データをグラフで表示
                 const pie = new Highcharts.Chart('pie',{
                   chart: {
@@ -232,6 +225,7 @@
               })
             });
             this.status = 'ready';
+            //音声録音ボタンを押すと5秒間カウント表示
             this.recorder.addEventListener('start', () => {
               let re = document.getElementById("sec");
               re.innerHTML = '録音中！(終了まであと5秒)';
