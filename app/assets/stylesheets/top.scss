@@ -27,6 +27,7 @@
     color: #4C4B4A;
     line-height: 2;
     font-size: 12px;
+    white-space: nowrap;
   }
   .link {
     display: inline-block;
@@ -298,12 +299,19 @@
     line-height: 2;;
     font-size: 20px;
   }
-  .link {
+  //.link {
+    //position: absolute;
+    //top: 60%;
+    //left: 3%;
+    //z-index: 1;
+  //}
+   .link {
     position: absolute;
-    top: 60%;
+    top: 80%;
     left: 3%;
     z-index: 1;
   }
+  
   .link a{
     font-family: 'Kosugi', sans-serif;
     color: #4C4B4A;

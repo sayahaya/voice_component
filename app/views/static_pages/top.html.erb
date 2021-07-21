@@ -17,7 +17,7 @@
       <div class="main">
         <%= image_tag 'face.png', class: 'background-image' %>
 
-        <button class="record-btn" type="button" v-if="status=='ready'" @click="startRecording">
+        <!--<button class="record-btn" type="button" v-if="status=='ready'" @click="startRecording">
           さっそく声の成分をチェック!!&nbsp;<i class="fas fa-microphone fa-lg"></i><br>
           (５秒間のマイク録音が開始されます)<br>
           <div class="message">
@@ -38,14 +38,21 @@
         
         <button class="reRecording-btn" type="button" v-if="status=='finishRecording'" @click="startRecording">
           もう一度声を録音する&nbsp;<i class="fas fa-microphone fa-lg"></i>
-        </button>
+        </button>-->
       </div>
-      
-      <div class="top_note">※マイクアクセスを許可にしてからご利用下さい。<br>※Internet Explorerではご利用出来ませんのでご了承下さい。</div>
+
+      <div class="top_note">＊2021.7.22 サービス一時停止のお知らせ
+        <br>『Voice component』をご利用いただき誠にありがとうございます。
+        <br>現在予想を上回る多くのアクセスをいただいており、
+        <br>安定したサービス提供に支障をきたす恐れがある為、
+        <br>誠に勝手ながら一旦サービスを停止させていただきます。
+        <br>恐れ入りますが何卒宜しくお願い致します。
+      </div>
+      <!--<div class="top_note">※マイクアクセスを許可にしてからご利用下さい。<br>※Internet Explorerではご利用出来ませんのでご了承下さい。</div>-->
       <div class="link">
-        <%= link_to "Voice componentとは？", help_path %><br>
+        <!--<%= link_to "Voice componentとは？", help_path %><br>
         <%= link_to "利用規約", terms_path %><br>
-        <%= link_to "プライバシーポリシー", privacy_path %><br>
+        <%= link_to "プライバシーポリシー", privacy_path %><br>-->
         <%= link_to "お問い合わせ先", inquiry_path %>
       </div>
 
@@ -53,7 +60,7 @@
     </div>
 
     <!--結果を見るボタンを押した後の結果画面部分 -->
-    <div v-if="screen=='resultScreen'" key="resultScreen">
+    <!--<div v-if="screen=='resultScreen'" key="resultScreen">
       <div class="resultTitle"><i class="fas fa-search fa-lg" aria-hidden="true"></i>&nbsp;分析結果</div>
       <div class="pie" id="pie"></div>
       <br>
@@ -71,7 +78,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div>-->
 
   </main>
 
@@ -109,7 +116,7 @@
       },
       mounted() {
         //  マイクにアクセス
-        navigator.mediaDevices.getUserMedia({ audio: true })
+        //navigator.mediaDevices.getUserMedia({ audio: true })
           .then(stream => {
             let audioBlob;
             this.recorder = new MediaRecorder(stream);
