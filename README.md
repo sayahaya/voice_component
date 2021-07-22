@@ -16,7 +16,7 @@ https://voice-component.com/
 まずトップ画面の「さっそく声の成分をチェック！」ボタンを押して５秒間音声録音。
 
 ## トップ画面(音声録音後)
-![トップ画面2](https://user-images.githubusercontent.com/73504807/126439779-43f76148-368-4ff9-8cc0-84147f9be9e6.png)
+![トップ画面2](https://user-images.githubusercontent.com/73504807/126578680-92aa6581-7fa7-4773-962c-a93920830e58.png)
 <br>
 音声録音後、「分析結果をチェック！」ボタンをクリック。
 
