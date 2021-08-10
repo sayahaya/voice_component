@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def top
-    message = TopMessage.order("RAND()").limit(1).pluck(:message)
+    message = TopMessage.order('RAND()').limit(1).pluck(:message)
     @message = message.first
   end
 
@@ -21,27 +21,26 @@ class StaticPagesController < ApplicationController
     request.body = file
     response = http.request(request)
     result = JSON.parse(response.read_body)
-    voiceId_1 = result['profilesRanking'][0]['profileId']
-    voiceId_2 = result['profilesRanking'][1]['profileId']
-    voiceId_3 = result['profilesRanking'][2]['profileId']
-    voiceId_4 = result['profilesRanking'][3]['profileId']
-    name_1 = Voice.find_by(profileId: voiceId_1)['name']
-    name_2 = Voice.find_by(profileId: voiceId_2)['name']
-    name_3 = Voice.find_by(profileId: voiceId_3)['name']
-    name_4 = Voice.find_by(profileId: voiceId_4)['name']
-    score_1 = (result['profilesRanking'][0]['score'])*100
-    score_2 = (result['profilesRanking'][1]['score'])*100
-    score_3 = (result['profilesRanking'][2]['score'])*100
-    score_4 = (result['profilesRanking'][3]['score'])*100
-    render json: { "name_1" => name_1,
-                   "name_2" => name_2,
-                   "name_3" => name_3,
-                   "name_4" => name_4,
-                   "score_1" => score_1,
-                   "score_2" => score_2,
-                   "score_3" => score_3,
-                   "score_4" => score_4
-                 }
+    voice_id1 = result['profilesRanking'][0]['profileId']
+    voice_id2 = result['profilesRanking'][1]['profileId']
+    voice_id3 = result['profilesRanking'][2]['profileId']
+    voice_id4 = result['profilesRanking'][3]['profileId']
+    name1 = Voice.find_by(profileId: voice_id1)['name']
+    name2 = Voice.find_by(profileId: voice_id2)['name']
+    name3 = Voice.find_by(profileId: voice_id3)['name']
+    name4 = Voice.find_by(profileId: voice_id4)['name']
+    score1 = (result['profilesRanking'][0]['score']) * 100
+    score2 = (result['profilesRanking'][1]['score']) * 100
+    score3 = (result['profilesRanking'][2]['score']) * 100
+    score4 = (result['profilesRanking'][3]['score']) * 100
+    render json: { 'name1' => name1,
+                   'name2' => name2,
+                   'name3' => name3,
+                   'name4' => name4,
+                   'score1' => score1,
+                   'score2' => score2,
+                   'score3' => score3,
+                   'score4' => score4 }
   end
 
   def help; end
