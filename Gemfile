@@ -20,9 +20,6 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'rubocop'
-  gem 'rubocop-rails'
-  gem 'rubocop-checkstyle_formatter'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
 end
@@ -32,6 +29,10 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
+  gem 'rubocop-checkstyle_formatter'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capistrano'
