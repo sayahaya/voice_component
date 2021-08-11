@@ -35,6 +35,14 @@ https://voice-component.com/
 <br>
 <br>
 
+# Qiita記事
+[【個人開発】「自分の声」が嫌いな人ほど使ってほしい！声成分分析サービス『Voice component』を作りました！](https://qiita.com/yama2_0506/items/b51999cd0d9445021ac4)
+<br>
+- LGTM 221(2021年8月11日現在)
+<br>
+<br>
+<br>
+
 # ER図
 ![ER図](https://user-images.githubusercontent.com/73504807/126449664-8a62aa5f-1716-4928-8077-3d3fe5aeb010.png)
 <br>
