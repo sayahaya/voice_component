@@ -1,6 +1,5 @@
 <html>
 <head>
-  <style>@import url('https://fonts.googleapis.com/css2?family=Kosugi&family=Rubik+Mono+One&display=swap');</style>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
 </head>
@@ -130,14 +129,14 @@
                 data: formData
               }).then(data => {
                 //サーバーからAPIレスポンスを取得
-                const name1 = data['name1'];
-                const name2 = data['name2'];
-                const name3 = data['name3'];
-                const name4 = data['name4'];
-                const api_score1 = data['score1']; //Apiレスポンスのscore
-                const api_score2 = data['score2'];
-                const api_score3 = data['score3'];
-                const api_score4 = data['score4']; 
+                const name1 = data['names'][0]['name'];
+                const name2 = data['names'][1]['name'];
+                const name3 = data['names'][2]['name'];
+                const name4 = data['names'][3]['name'];
+                const api_score1 = data['scores'][0]; //Apiレスポンスのscore
+                const api_score2 = data['scores'][1];
+                const api_score3 = data['scores'][2];
+                const api_score4 = data['scores'][3]; 
                 //APIからの取得データをグラフで表示
                 const pie = new Highcharts.Chart('pie',{
                   chart: {

@@ -16,6 +16,8 @@ gem 'config'
 gem 'bootstrap', '~> 4.6.0'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'jquery-rails'
+gem 'faraday'
+gem 'faraday_middleware'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
