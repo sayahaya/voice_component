@@ -1,9 +1,4 @@
-<html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-  <script src="https://code.highcharts.com/stock/highstock.js"></script>
-</head>
-<body ontouchstart="">
+<template>
   <main id="app">
     <!-- 録音の開始/録音中/結果を見るボタンを設置する部分 -->
     <div class="container-fluid" v-if="screen=='recordingScreen'" key="recordingScreen">
@@ -70,8 +65,9 @@
     </div>
 
   </main>
+</template>
 
-  <script>
+<script>
     new Vue({
       el: '#app',
       data: {
@@ -128,12 +124,11 @@
                 dataType: 'json',
                 data: formData
               }).then(data => {
-                console.log(data);
                 //サーバーからAPIレスポンスを取得
-                const name1 = data['names'][0];
-                const name2 = data['names'][1];
-                const name3 = data['names'][2];
-                const name4 = data['names'][3];
+                const name1 = data['names'][0]['name'];
+                const name2 = data['names'][1]['name'];
+                const name3 = data['names'][2]['name'];
+                const name4 = data['names'][3]['name'];
                 const api_score1 = data['scores'][0]; //Apiレスポンスのscore
                 const api_score2 = data['scores'][1];
                 const api_score3 = data['scores'][2];
@@ -242,6 +237,7 @@
           })
        }
      });
-  </script>
-</body>
-</html>
+</script>
+
+<style>
+</style>

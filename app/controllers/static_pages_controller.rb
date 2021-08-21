@@ -2,23 +2,17 @@ class StaticPagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def top
-    message = TopMessage.order('RAND()').limit(1).pluck(:message)
-    @message = message.first
+    @message = TopMessage.message
   end
 
   def result
     @audio = params[:audio]
-    @file = File.read(@audio)
-    conn = SpeakerRecognitionClient.result_connection
-    response = conn.post do |request|
-      request.body = @file
-    end
-    result = response.body
-    voice_ids = result['profilesRanking'][0..3].map { |id| id['profileId'] }
-    names = Voice.where(profileId: voice_ids).select('name')
-    scores = result['profilesRanking'][0..3].map { |score| score['score'] * 100 }
-    render json: { 'names' => names,
-                   'scores' => scores }
+    res = SpeakerRecognitionClient.response(@audio)
+    voice_ids = res['profilesRanking'][0..3].map { |id| id['profileId'] }
+    voice_names = Voice.data.select { |voice| voice_ids.include?(voice[:profile_id]) }.map { |voice| voice[:name] }
+    voice_scores = res['profilesRanking'][0..3].map { |score| score['score'] * 100 }
+    render json: { 'names' => voice_names,
+                   'scores' => voice_scores }
   end
 
   def help; end
