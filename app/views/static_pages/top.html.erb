@@ -22,17 +22,17 @@
           </div>
         </button>
 
-        <button class="recording-btn" type="button" v-if="status=='recording'">
+        <button class="recording-btn" type="button" v-show="status=='recording'">
           <span id="sec"></span>&nbsp;<i class="fas fa-microphone fa-lg"></i>
         </button>
       
         <form id="btn">
-          <button class="result-btn" type="button" v-if="status=='finishRecording'" @click="changeScreen">
+          <button class="result-btn" type="button" v-show="status=='finishRecording'" @click="changeScreen">
             分析結果を確認する!!&nbsp;<i class="fas fa-search fa-lg" aria-hidden="true"></i>
           </button>
         </form>
         
-        <button class="reRecording-btn" type="button" v-if="status=='finishRecording'" @click="startRecording">
+        <button class="reRecording-btn" type="button" v-show="status=='finishRecording'" @click="startRecording">
           もう一度声を録音する&nbsp;<i class="fas fa-microphone fa-lg"></i>
         </button>
       </div>
