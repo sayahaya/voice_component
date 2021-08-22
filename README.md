@@ -43,11 +43,6 @@ https://voice-component.com/
 <br>
 <br>
 
-# ER図
-![ER図](https://user-images.githubusercontent.com/73504807/126449664-8a62aa5f-1716-4928-8077-3d3fe5aeb010.png)
-<br>
-<br>
-<br>
 
 # 使用技術
 - Ruby 3.0.0
