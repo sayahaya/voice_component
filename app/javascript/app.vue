@@ -9,27 +9,6 @@
       audioExtension: '',  // 音声ファイルの拡張子
       screen: 'recordingScreen', //画面切り替え
     },
-    methods: {
-      //  録音を開始する部分
-      startRecording() {
-        this.status = 'recording';
-        this.audioData = [];
-        this.recorder.start();
-      },
-      //  音声ファイルの拡張子を取得する部分
-      getExtension(audioType) {
-        let extension = 'wav';
-        const matches = audioType.match(/audio\/([^;]+)/);
-        if(matches) {
-          extension = matches[1];
-        }  
-        return '.'+ extension;
-      },
-      // 結果画面に切り替える部分
-      changeScreen () {
-        this.screen = 'resultScreen';
-      }
-    },
     mounted() {
       //  マイクにアクセス
       navigator.mediaDevices.getUserMedia({ audio: true })
@@ -48,14 +27,13 @@
           });
           document.getElementById("btn").addEventListener('click', () => {
               $.ajax({
-              url: '/result',  
+              url: '/result',
               type: 'POST',
               contentType: false,
               processData: false,
               dataType: 'json',
               data: formData
             }).then(data => {
-              console.log(data);
               //サーバーからAPIレスポンスを取得
               const name1 = data['names'][0];
               const name2 = data['names'][1];
@@ -64,7 +42,7 @@
               const api_score1 = data['scores'][0]; //Apiレスポンスのscore
               const api_score2 = data['scores'][1];
               const api_score3 = data['scores'][2];
-              const api_score4 = data['scores'][3]; 
+              const api_score4 = data['scores'][3];
               //APIからの取得データをグラフで表示
               const pie = new Highcharts.Chart('pie',{
                 chart: {
@@ -75,7 +53,7 @@
                 },
                 title: {//タイトル設定
                   style: {
-                    fontWeight: 'bold' 
+                    fontWeight: 'bold'
                   },
                   text: 'あなたの声は下記成分を含んでいます・・・！！'
                 },
@@ -87,14 +65,14 @@
                     chartOptions: {
                       title: {
                         style: {
-                          fontSize: 13 
+                          fontSize: 13
                         }
                       }
                     }
                   }]
                 },
                 plotOptions: {//オプション設定
-                  pie: {               
+                  pie: {
                     dataLabels: {
                       color: 'black',
                       formatter: function() {
@@ -109,7 +87,7 @@
                 },
                 credits: {
                   enabled: false,
-                }, 
+                },
                 series: [{//データ設定
                   type: 'pie',
                   data: [//分析結果画面に表示する名前・スコアデータ
@@ -128,22 +106,13 @@
               const result_score2 = Math.round((api_score2 / total_score) *1000)/10 +'％';
               const result_score3 = Math.round((api_score3 / total_score) *1000)/10 +'％';
               const result_score4 = Math.round((api_score4 / total_score) *1000)/10 +'％';
-              if (api_score4 > 0){
-                twitter.href = "http://twitter.com/intent/tweet?text=" 
-                + "あなたの声は・・・" + '%0a%0a' + name1 + '%20%20' + result_score1 + '%0a' + name2 + '%20%20' + result_score2 + '%0a' 
+              const twitter_post = "http://twitter.com/intent/tweet?text="
+                + "あなたの声は・・・" + '%0a%0a' + name1 + '%20%20' + result_score1 + '%0a' + name2 + '%20%20' + result_score2 + '%0a'
                 + name3 + '%20%20' + result_score3 + '%0a' + name4 + '%20%20' + result_score4
                 + '%0a%0a' + "の成分を含んでいます!!" + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
-              } else if (api_score4 <= 0 && api_score3 > 0){
-                twitter.href = "http://twitter.com/intent/tweet?text=" 
-                + "あなたの声は・・・" + '%0a%0a' + name1 + '%20%20' + result_score1 + '%0a' + name2 + '%20%20' + result_score2 + '%0a' 
-                + name3 + '%20%20' + result_score3 + '%0a' 
-                + '%0a%0a' + "の成分を含んでいます!!" + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
-              } else if (api_score4 <= 0 && api_score3 <= 0){
-                twitter.href = "http://twitter.com/intent/tweet?text=" 
-                + "あなたの声は・・・" + '%0a%0a' + name1 + '%20%20' + result_score1 + '%0a' + name2 + '%20%20' + result_score2 + '%0a' 
-                + '%0a%0a' + "の成分を含んでいます!!" + '%0a%0a' + '%23' + "VoiceComponent" + '%0a' + "&url=https://voice-component.com";
-              }                
+              twitter.href = twitter_post
             }).catch(err => {//録音失敗した場合のエラーメッセージを表示
+              console.log(err);
               alert('音声の録音に失敗しました。マイクを確認していただき、再度録音をお願いします。');
             })
           });
@@ -167,6 +136,27 @@
             }, 5000);
           });
         })
+    },
+    methods: {
+      //  録音を開始する部分
+      startRecording() {
+        this.status = 'recording';
+        this.audioData = [];
+        this.recorder.start();
+      },
+      //  音声ファイルの拡張子を取得する部分
+      getExtension(audioType) {
+        let extension = 'wav';
+        const matches = audioType.match(/audio\/([^;]+)/);
+        if(matches) {
+          extension = matches[1];
+        }
+        return '.'+ extension;
+      },
+      // 結果画面に切り替える部分
+      changeScreen () {
+        this.screen = 'resultScreen';
+      }
     }
    });
 </script>
