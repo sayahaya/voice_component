@@ -6,8 +6,6 @@ RSpec.describe "TopPages", type: :system do
       visit root_path
       click_on 'Voice componentとは'
       expect(page).to have_content 'Voice componentとは'
-      expect(page).to have_selector("img[src$='recording-f03a3ed41c92298383dbb7c5d074e4344773c072210a52816637e884837598b0.png']")
-      expect(page).to have_selector("img[src$='result-7f6861cf8d69f8be7f734f9acda182af2dd6b3a8884b3a259a5b957779bd8f56.png']")
       expect(page).to have_link 'トップページへ'
     end
   end
@@ -20,7 +18,7 @@ RSpec.describe "TopPages", type: :system do
       expect(page).to have_link 'トップページへ'
     end
   end
-  
+
   context 'プライバシーポリシーページにアクセス' do
     it '正しく表示される' do
       visit root_path
