@@ -7,7 +7,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <%= javascript_pack_tag 'app' %>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@yama2_0506" />
     <meta property="og:url" content="https://voice-component.com"/>
@@ -15,6 +16,7 @@
     <meta property="og:description" content="簡単５秒！あなたの声成分にどの有名人の声が含まれているかを診断してくれるアプリです！"/>
     <meta property="og:image" content="<%= asset_url('twitter-card.png') %>"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y1X8S6QNT"></script>
     <script>
@@ -26,7 +28,7 @@
     </script>
   </head>
 
-  <body>
+  <body ontouchstart="">
     <%= yield %>
   </body>
 </html>
